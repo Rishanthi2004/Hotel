@@ -156,28 +156,28 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 ? { duration: 0.15 }
                 : { type: 'spring', stiffness: 260, damping: 26 }
             }
-            className="bg-[#FAF8F5] dark:bg-stone-900 border border-stone-200 dark:border-stone-700 max-w-4xl w-full max-h-[92vh] flex flex-col relative shadow-2xl text-stone-900 dark:text-stone-100 transition-colors overflow-hidden rounded-sm"
+            className="bg-[#F7FAFA] dark:bg-stone-900 border border-slate-200 dark:border-stone-700 max-w-4xl w-full max-h-[92vh] flex flex-col relative shadow-2xl text-slate-900 dark:text-stone-100 transition-colors overflow-hidden rounded-sm"
           >
         {/* Sticky Header with prominent Back button & Close */}
-        <div className="px-5 py-4 sm:px-8 sm:py-5 border-b border-stone-200 dark:border-stone-800 bg-[#FAF8F5] dark:bg-stone-900 sticky top-0 z-30 shrink-0 flex items-center justify-between gap-4">
+        <div className="px-5 py-4 sm:px-8 sm:py-5 border-b border-slate-200 dark:border-stone-800 bg-[#F7FAFA] dark:bg-stone-900 sticky top-0 z-30 shrink-0 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <button
               onClick={resetAndClose}
               type="button"
-              className="py-1.5 px-3 -ml-1 text-stone-700 dark:text-stone-300 hover:text-stone-950 dark:hover:text-white bg-stone-200/60 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 border border-stone-300 dark:border-stone-700 transition-all flex items-center gap-1.5 text-xs font-medium cursor-pointer shadow-sm"
+              className="py-1.5 px-3 -ml-1 text-slate-700 dark:text-stone-300 hover:text-slate-950 dark:hover:text-white bg-slate-200/70 dark:bg-stone-800 hover:bg-slate-200 dark:hover:bg-stone-700 border border-slate-300 dark:border-stone-700 transition-all flex items-center gap-1.5 text-xs font-medium cursor-pointer shadow-sm"
               title="Go back to resort (Backspace / Esc)"
               aria-label="Back to resort"
             >
-              <ArrowLeft className="w-3.5 h-3.5 text-amber-700 dark:text-amber-300" />
+              <ArrowLeft className="w-3.5 h-3.5 text-teal-700 dark:text-teal-300" />
               <span className="font-sans uppercase tracking-wider text-[11px]">Back</span>
             </button>
-            <div className="h-4 w-[1px] bg-stone-300 dark:bg-stone-700 hidden sm:block" />
+            <div className="h-4 w-[1px] bg-slate-300 dark:bg-stone-700 hidden sm:block" />
             <div>
-              <span className="text-[10px] tracking-[0.25em] uppercase text-amber-700 dark:text-amber-300/80 font-medium block">
+              <span className="text-[10px] tracking-[0.25em] uppercase text-teal-700 dark:text-teal-300/80 font-medium block">
                 Private Booking Engine
               </span>
-              <h3 className="text-base sm:text-xl font-serif-luxury text-stone-900 dark:text-stone-100 leading-tight">
-                {isConfirmed ? 'Reservation Confirmed' : 'Configure Your Mountain Stay'}
+              <h3 className="text-base sm:text-xl font-serif-luxury text-slate-900 dark:text-stone-100 leading-tight">
+                {isConfirmed ? 'Reservation Confirmed' : 'Configure Your Coastal Stay'}
               </h3>
             </div>
           </div>
@@ -185,7 +185,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           <button
             onClick={resetAndClose}
             type="button"
-            className="p-2 text-stone-400 hover:text-stone-900 dark:hover:text-white hover:bg-stone-200/50 dark:hover:bg-stone-800/60 rounded-full transition-colors cursor-pointer"
+            className="p-2 text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-stone-800/60 rounded-full transition-colors cursor-pointer"
             title="Close (Esc)"
             aria-label="Close"
           >
@@ -205,85 +205,85 @@ export const BookingModal: React.FC<BookingModalProps> = ({
             transition={{ duration: shouldReduceMotion ? 0.15 : 0.35, ease: LUXURY_EASE }}
             className="p-6 md:p-10 space-y-8"
           >
-            <div className="text-center py-6 border-b border-stone-200 dark:border-stone-800">
+            <div className="text-center py-6 border-b border-slate-200 dark:border-stone-800">
               <motion.div
                 initial={shouldReduceMotion ? undefined : { scale: 0.5, rotate: -12 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ type: 'spring', stiffness: 280, damping: 18, delay: 0.08 }}
-                className="inline-flex p-3 bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-500/40 rounded-full mb-4"
+                className="inline-flex p-3 bg-teal-50 dark:bg-teal-950/60 border border-teal-200 dark:border-teal-500/40 rounded-full mb-4"
               >
-                <CheckCircle2 className="w-8 h-8 text-amber-700 dark:text-amber-300" />
+                <CheckCircle2 className="w-8 h-8 text-teal-700 dark:text-teal-300" />
               </motion.div>
-              <p className="text-xs tracking-[0.25em] uppercase text-amber-700 dark:text-amber-300/80 mb-1">
+              <p className="text-xs tracking-[0.25em] uppercase text-teal-700 dark:text-teal-300/80 mb-1">
                 Booking Reference
               </p>
-              <h4 className="text-3xl font-mono text-stone-900 dark:text-stone-100 tracking-wider">{confirmationCode}</h4>
-              <p className="text-xs text-stone-600 dark:text-stone-400 mt-2">
+              <h4 className="text-3xl font-mono text-slate-900 dark:text-stone-100 tracking-wider">{confirmationCode}</h4>
+              <p className="text-xs text-slate-600 dark:text-stone-400 mt-2">
                 A formal invitation and itinerary has been dispatched to <strong>{guestEmail}</strong>.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white dark:bg-stone-950/60 p-6 border border-stone-200 dark:border-stone-800 shadow-sm dark:shadow-none">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white dark:bg-stone-950/60 p-6 border border-slate-200 dark:border-stone-800 shadow-sm dark:shadow-none">
               <div>
-                <h5 className="text-[11px] uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-3">Reservation Folio</h5>
+                <h5 className="text-[11px] uppercase tracking-wider text-slate-500 dark:text-stone-400 mb-3">Reservation Folio</h5>
                 <ul className="space-y-2 text-xs">
                   <li className="flex justify-between">
-                    <span className="text-stone-500 dark:text-stone-400">Primary Guest:</span>
-                    <span className="text-stone-900 dark:text-stone-200 font-medium">{guestName}</span>
+                    <span className="text-slate-500 dark:text-stone-400">Primary Guest:</span>
+                    <span className="text-slate-900 dark:text-stone-200 font-medium">{guestName}</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-stone-500 dark:text-stone-400">Residence:</span>
-                    <span className="text-stone-900 dark:text-stone-200 font-medium">{currentVilla.name}</span>
+                    <span className="text-slate-500 dark:text-stone-400">Residence:</span>
+                    <span className="text-slate-900 dark:text-stone-200 font-medium">{currentVilla.name}</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-stone-500 dark:text-stone-400">Check-in Date:</span>
-                    <span className="text-stone-900 dark:text-stone-200 font-medium">{checkIn} (15:00)</span>
+                    <span className="text-slate-500 dark:text-stone-400">Check-in Date:</span>
+                    <span className="text-slate-900 dark:text-stone-200 font-medium">{checkIn} (15:00)</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-stone-500 dark:text-stone-400">Check-out Date:</span>
-                    <span className="text-stone-900 dark:text-stone-200 font-medium">{checkOut} (11:00)</span>
+                    <span className="text-slate-500 dark:text-stone-400">Check-out Date:</span>
+                    <span className="text-slate-900 dark:text-stone-200 font-medium">{checkOut} (11:00)</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-stone-500 dark:text-stone-400">Duration:</span>
-                    <span className="text-stone-900 dark:text-stone-200 font-medium">{nights} Nights</span>
+                    <span className="text-slate-500 dark:text-stone-400">Duration:</span>
+                    <span className="text-slate-900 dark:text-stone-200 font-medium">{nights} Nights</span>
                   </li>
                   <li className="flex justify-between">
-                    <span className="text-stone-500 dark:text-stone-400">Total Party:</span>
-                    <span className="text-stone-900 dark:text-stone-200 font-medium">{guests} Guests</span>
+                    <span className="text-slate-500 dark:text-stone-400">Total Party:</span>
+                    <span className="text-slate-900 dark:text-stone-200 font-medium">{guests} Guests</span>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h5 className="text-[11px] uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-3">Curated Stay Arrangement</h5>
+                <h5 className="text-[11px] uppercase tracking-wider text-slate-500 dark:text-stone-400 mb-3">Curated Stay Arrangement</h5>
                 <ul className="space-y-2 text-xs">
                   <li className="flex justify-between gap-4">
-                    <span className="text-stone-500 dark:text-stone-400">Sanctuary Suite:</span>
-                    <span className="text-stone-900 dark:text-stone-200 font-medium text-right">{currentVilla.category}</span>
+                    <span className="text-slate-500 dark:text-stone-400">Sanctuary Suite:</span>
+                    <span className="text-slate-900 dark:text-stone-200 font-medium text-right">{currentVilla.category}</span>
                   </li>
                   <li className="flex justify-between gap-4">
-                    <span className="text-stone-500 dark:text-stone-400">Included Access:</span>
-                    <span className="text-stone-900 dark:text-stone-200 font-medium text-right">24/7 Butler & Thermal Onsen</span>
+                    <span className="text-slate-500 dark:text-stone-400">Included Access:</span>
+                    <span className="text-slate-900 dark:text-stone-200 font-medium text-right">24/7 Butler &amp; Pool Access</span>
                   </li>
                   <li className="flex justify-between gap-4">
-                    <span className="text-stone-500 dark:text-stone-400">Selected Enhancements:</span>
-                    <span className="text-stone-900 dark:text-stone-200 font-medium text-right">
+                    <span className="text-slate-500 dark:text-stone-400">Selected Enhancements:</span>
+                    <span className="text-slate-900 dark:text-stone-200 font-medium text-right">
                       {selectedEnhancements.length > 0 ? `${selectedEnhancements.length} Selected` : 'None'}
                     </span>
                   </li>
                 </ul>
-                <div className="mt-4 p-3 bg-stone-50 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 text-[11px] text-stone-600 dark:text-stone-400 flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-amber-600 dark:text-amber-300/80 shrink-0" />
+                <div className="mt-4 p-3 bg-[#EDF4F3] dark:bg-stone-900 border border-teal-900/15 dark:border-stone-800 text-[11px] text-slate-600 dark:text-stone-400 flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-teal-700 dark:text-teal-300/80 shrink-0" />
                   <span>Our private concierge will coordinate all arrival and bespoke stay arrangements directly with you.</span>
                 </div>
               </div>
             </div>
 
-            <div className="flex justify-between items-center pt-4 border-t border-stone-200 dark:border-stone-800">
+            <div className="flex justify-between items-center pt-4 border-t border-slate-200 dark:border-stone-800">
               <button
                 onClick={() => window.print()}
                 type="button"
-                className="py-2.5 px-4 border border-stone-300 dark:border-stone-700 hover:border-stone-500 text-stone-800 dark:text-stone-300 text-xs tracking-wider uppercase transition-colors flex items-center gap-2 bg-white dark:bg-stone-900"
+                className="py-2.5 px-4 border border-slate-300 dark:border-stone-700 hover:border-slate-500 text-slate-800 dark:text-stone-300 text-xs tracking-wider uppercase transition-colors flex items-center gap-2 bg-white dark:bg-stone-900 cursor-pointer"
               >
                 <Printer className="w-3.5 h-3.5" />
                 <span>Print Folio</span>
@@ -291,7 +291,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               <button
                 onClick={resetAndClose}
                 type="button"
-                className="py-2.5 px-6 bg-amber-100 hover:bg-amber-200 dark:bg-amber-100 dark:hover:bg-amber-200 text-stone-950 text-xs tracking-[0.2em] uppercase font-medium shadow-sm"
+                className="py-2.5 px-6 bg-teal-700 hover:bg-teal-800 dark:bg-teal-400 dark:hover:bg-teal-300 text-white dark:text-stone-950 text-xs tracking-[0.2em] uppercase font-medium shadow-sm cursor-pointer transition-colors"
               >
                 Return to Resort
               </button>
@@ -312,17 +312,17 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               <div className="md:col-span-7 space-y-6">
                 {/* Villa Choice */}
                 <div>
-                  <label className="block text-[10px] tracking-[0.2em] uppercase text-stone-600 dark:text-stone-400 mb-2 font-medium">
+                  <label className="block text-[10px] tracking-[0.2em] uppercase text-slate-600 dark:text-stone-400 mb-2 font-medium">
                     Select Residence
                   </label>
                   <select
                     value={selectedVillaId}
                     onChange={(e) => setSelectedVillaId(e.target.value)}
-                    className="w-full bg-white dark:bg-stone-950 border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-200 text-xs py-2.5 px-3 focus:outline-none focus:border-amber-600 dark:focus:border-amber-300 rounded-none cursor-pointer"
+                    className="w-full bg-white dark:bg-stone-950 border border-slate-300 dark:border-stone-700 text-slate-900 dark:text-stone-200 text-xs py-2.5 px-3 focus:outline-none focus:border-teal-700 dark:focus:border-teal-300 rounded-none cursor-pointer"
                   >
                     {RESORT_DATA.villas.map((v) => (
-                      <option key={v.id} value={v.id} className="bg-white dark:bg-stone-900 text-stone-900 dark:text-stone-200">
-                        {v.name} ({v.capacity} · {v.sqm} m²)
+                      <option key={v.id} value={v.id} className="bg-white dark:bg-stone-900 text-slate-900 dark:text-stone-200">
+                        {v.name} ({v.category} · {v.capacity} · {v.sqm} m²)
                       </option>
                     ))}
                   </select>
@@ -331,35 +331,35 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 {/* Dates & Guests */}
                 <div className="grid grid-cols-3 gap-3">
                   <div>
-                    <label className="block text-[10px] tracking-[0.2em] uppercase text-stone-600 dark:text-stone-400 mb-2 font-medium">
+                    <label className="block text-[10px] tracking-[0.2em] uppercase text-slate-600 dark:text-stone-400 mb-2 font-medium">
                       Arrival
                     </label>
                     <input
                       type="date"
                       value={checkIn}
                       onChange={(e) => setCheckIn(e.target.value)}
-                      className="w-full bg-white dark:bg-stone-950 border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-200 text-xs py-2 px-2.5 focus:outline-none focus:border-amber-600 dark:focus:border-amber-300 rounded-none"
+                      className="w-full bg-white dark:bg-stone-950 border border-slate-300 dark:border-stone-700 text-slate-900 dark:text-stone-200 text-xs py-2 px-2.5 focus:outline-none focus:border-teal-700 dark:focus:border-teal-300 rounded-none"
                     />
                   </div>
                   <div>
-                    <label className="block text-[10px] tracking-[0.2em] uppercase text-stone-600 dark:text-stone-400 mb-2 font-medium">
+                    <label className="block text-[10px] tracking-[0.2em] uppercase text-slate-600 dark:text-stone-400 mb-2 font-medium">
                       Departure
                     </label>
                     <input
                       type="date"
                       value={checkOut}
                       onChange={(e) => setCheckOut(e.target.value)}
-                      className="w-full bg-white dark:bg-stone-950 border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-200 text-xs py-2 px-2.5 focus:outline-none focus:border-amber-600 dark:focus:border-amber-300 rounded-none"
+                      className="w-full bg-white dark:bg-stone-950 border border-slate-300 dark:border-stone-700 text-slate-900 dark:text-stone-200 text-xs py-2 px-2.5 focus:outline-none focus:border-teal-700 dark:focus:border-teal-300 rounded-none"
                     />
                   </div>
                   <div>
-                    <label className="block text-[10px] tracking-[0.2em] uppercase text-stone-600 dark:text-stone-400 mb-2 font-medium">
+                    <label className="block text-[10px] tracking-[0.2em] uppercase text-slate-600 dark:text-stone-400 mb-2 font-medium">
                       Party Size
                     </label>
                     <select
                       value={guests}
                       onChange={(e) => setGuests(Number(e.target.value))}
-                      className="w-full bg-white dark:bg-stone-950 border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-200 text-xs py-2 px-2.5 focus:outline-none focus:border-amber-600 dark:focus:border-amber-300 rounded-none cursor-pointer"
+                      className="w-full bg-white dark:bg-stone-950 border border-slate-300 dark:border-stone-700 text-slate-900 dark:text-stone-200 text-xs py-2 px-2.5 focus:outline-none focus:border-teal-700 dark:focus:border-teal-300 rounded-none cursor-pointer"
                     >
                       <option value={1}>1 Guest</option>
                       <option value={2}>2 Guests</option>
@@ -373,26 +373,26 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
                 {/* Curated Bespoke Add-ons */}
                 <div>
-                  <label className="block text-[10px] tracking-[0.2em] uppercase text-stone-600 dark:text-stone-400 mb-3 font-medium">
+                  <label className="block text-[10px] tracking-[0.2em] uppercase text-slate-600 dark:text-stone-400 mb-3 font-medium">
                     Curated Enhancements (Optional)
                   </label>
                   <div className="space-y-2.5">
                     {enhancementOptions.map((option) => (
                       <label
                         key={option.key}
-                        className="flex items-start gap-3 p-3 bg-white dark:bg-stone-950/70 border border-stone-200 dark:border-stone-800 hover:border-stone-400 dark:hover:border-stone-700 cursor-pointer shadow-sm dark:shadow-none"
+                        className="flex items-start gap-3 p-3 bg-white dark:bg-stone-950/70 border border-slate-200 dark:border-stone-800 hover:border-teal-600/50 dark:hover:border-stone-700 cursor-pointer shadow-sm dark:shadow-none transition-colors"
                       >
                         <input
                           type="checkbox"
                           checked={addOns[option.key]}
                           onChange={(e) => setAddOns({ ...addOns, [option.key]: e.target.checked })}
-                          className="mt-1 accent-amber-600 dark:accent-amber-300"
+                          className="mt-1 accent-teal-700 dark:accent-teal-300"
                         />
                         <div className="text-xs">
-                          <div className="text-stone-900 dark:text-stone-200 font-medium">
+                          <div className="text-slate-900 dark:text-stone-200 font-medium">
                             {option.title}
                           </div>
-                          <p className="text-[11px] text-stone-500 dark:text-stone-400 font-light mt-0.5">
+                          <p className="text-[11px] text-slate-500 dark:text-stone-400 font-light mt-0.5">
                             {option.description}
                           </p>
                         </div>
@@ -402,63 +402,63 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 </div>
 
                 {/* Guest Details */}
-                <div className="pt-4 border-t border-stone-200 dark:border-stone-800 space-y-4">
-                  <h4 className="text-[11px] uppercase tracking-wider text-stone-500 dark:text-stone-400 font-medium">
-                    Primary Guest & Contact
+                <div className="pt-4 border-t border-slate-200 dark:border-stone-800 space-y-4">
+                  <h4 className="text-[11px] uppercase tracking-wider text-slate-500 dark:text-stone-400 font-medium">
+                    Primary Guest &amp; Contact
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-[10px] tracking-wider text-stone-600 dark:text-stone-400 mb-1">Full Legal Name</label>
+                      <label className="block text-[10px] tracking-wider text-slate-600 dark:text-stone-400 mb-1">Full Legal Name</label>
                       <input
                         type="text"
                         required
                         value={guestName}
                         onChange={(e) => setGuestName(e.target.value)}
-                        placeholder="e.g. Lord Alexander Sinclair"
-                        className="w-full bg-white dark:bg-stone-950 border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-200 text-xs py-2 px-3 focus:outline-none focus:border-amber-600 dark:focus:border-amber-300 rounded-none"
+                        placeholder="e.g. Aarav Menon"
+                        className="w-full bg-white dark:bg-stone-950 border border-slate-300 dark:border-stone-700 text-slate-900 dark:text-stone-200 text-xs py-2 px-3 focus:outline-none focus:border-teal-700 dark:focus:border-teal-300 rounded-none"
                       />
                     </div>
                     <div>
-                      <label className="block text-[10px] tracking-wider text-stone-600 dark:text-stone-400 mb-1">Direct Email</label>
+                      <label className="block text-[10px] tracking-wider text-slate-600 dark:text-stone-400 mb-1">Direct Email</label>
                       <input
                         type="email"
                         required
                         value={guestEmail}
                         onChange={(e) => setGuestEmail(e.target.value)}
-                        placeholder="sinclair@private.ch"
-                        className="w-full bg-white dark:bg-stone-950 border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-200 text-xs py-2 px-3 focus:outline-none focus:border-amber-600 dark:focus:border-amber-300 rounded-none"
+                        placeholder="guest@example.com"
+                        className="w-full bg-white dark:bg-stone-950 border border-slate-300 dark:border-stone-700 text-slate-900 dark:text-stone-200 text-xs py-2 px-3 focus:outline-none focus:border-teal-700 dark:focus:border-teal-300 rounded-none"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-[10px] tracking-wider text-stone-600 dark:text-stone-400 mb-1">Telephone / WhatsApp</label>
+                    <label className="block text-[10px] tracking-wider text-slate-600 dark:text-stone-400 mb-1">Telephone / WhatsApp</label>
                     <input
                       type="tel"
                       value={guestPhone}
                       onChange={(e) => setGuestPhone(e.target.value)}
-                      placeholder="+41 79 000 0000"
-                      className="w-full bg-white dark:bg-stone-950 border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-200 text-xs py-2 px-3 focus:outline-none focus:border-amber-600 dark:focus:border-amber-300 rounded-none"
+                      placeholder="+91 98422 08820"
+                      className="w-full bg-white dark:bg-stone-950 border border-slate-300 dark:border-stone-700 text-slate-900 dark:text-stone-200 text-xs py-2 px-3 focus:outline-none focus:border-teal-700 dark:focus:border-teal-300 rounded-none"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[10px] tracking-wider text-stone-600 dark:text-stone-400 mb-1">Special Preferences / Dietary Notes</label>
+                    <label className="block text-[10px] tracking-wider text-slate-600 dark:text-stone-400 mb-1">Special Preferences / Dietary Notes</label>
                     <textarea
                       rows={2}
                       value={specialRequests}
                       onChange={(e) => setSpecialRequests(e.target.value)}
-                      placeholder="e.g. Sunset wing requested, lactose intolerance, arrival via private helicopter."
-                      className="w-full bg-white dark:bg-stone-950 border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-200 text-xs py-2 px-3 focus:outline-none focus:border-amber-600 dark:focus:border-amber-300 rounded-none"
+                      placeholder="e.g. Poolside suite requested, early check-in, vegetarian breakfast."
+                      className="w-full bg-white dark:bg-stone-950 border border-slate-300 dark:border-stone-700 text-slate-900 dark:text-stone-200 text-xs py-2 px-3 focus:outline-none focus:border-teal-700 dark:focus:border-teal-300 rounded-none"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Right Column: Pricing Breakdown & Real Photo Preview */}
-              <div className="md:col-span-5 flex flex-col justify-between bg-stone-50 dark:bg-stone-950 p-6 border border-stone-200 dark:border-stone-800">
+              <div className="md:col-span-5 flex flex-col justify-between bg-[#EDF4F3] dark:bg-stone-950 p-6 border border-teal-900/15 dark:border-stone-800">
                 <div>
-                  <div className="aspect-[16/10] overflow-hidden mb-4 border border-stone-200 dark:border-stone-800 relative shadow-sm dark:shadow-none bg-stone-200 dark:bg-stone-800">
+                  <div className="aspect-[16/10] overflow-hidden mb-4 border border-slate-200 dark:border-stone-800 relative shadow-sm dark:shadow-none bg-slate-200 dark:bg-stone-800">
                     <AnimatePresence mode="wait">
                       <motion.img
                         key={currentVilla.id}
@@ -469,45 +469,48 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: shouldReduceMotion ? 0.15 : 0.4, ease: LUXURY_EASE }}
-                        className="w-full h-full object-cover"
+                        className={`w-full h-full object-cover ${currentVilla.imagePosition ?? 'object-center'}`}
                       />
                     </AnimatePresence>
-                    <div className="absolute bottom-2 left-2 right-2 bg-stone-950/80 px-2.5 py-1 text-[10px] text-stone-200 flex justify-between">
-                      <span>{currentVilla.name}</span>
+                    <div className="absolute top-2 left-2 bg-slate-950/80 px-2 py-0.5 text-[10px] uppercase tracking-wider text-teal-200">
+                      {currentVilla.category}
+                    </div>
+                    <div className="absolute bottom-2 left-2 right-2 bg-slate-950/80 px-2.5 py-1 text-[10px] text-slate-100 flex justify-between">
+                      <span>{currentVilla.code} · {currentVilla.subtitle}</span>
                       <span>{currentVilla.sqm} m²</span>
                     </div>
                   </div>
 
-                  <h5 className="text-xs uppercase tracking-[0.2em] text-stone-600 dark:text-stone-400 mb-4 font-medium">
+                  <h5 className="text-xs uppercase tracking-[0.2em] text-slate-600 dark:text-stone-400 mb-4 font-medium">
                     Stay Reservation Summary
                   </h5>
 
                   <div className="space-y-2.5 text-xs">
-                    <div className="flex justify-between gap-4 text-stone-700 dark:text-stone-300">
+                    <div className="flex justify-between gap-4 text-slate-700 dark:text-stone-300">
                       <span>Residence</span>
-                      <span className="text-stone-900 dark:text-stone-200 font-medium text-right">{currentVilla.name}</span>
+                      <span className="text-slate-900 dark:text-stone-200 font-medium text-right">{currentVilla.name}</span>
                     </div>
 
-                    <div className="flex justify-between gap-4 text-stone-700 dark:text-stone-300">
+                    <div className="flex justify-between gap-4 text-slate-700 dark:text-stone-300">
                       <span>Duration</span>
-                      <span className="text-stone-900 dark:text-stone-200 font-medium">
+                      <span className="text-slate-900 dark:text-stone-200 font-medium">
                         {nights} {nights === 1 ? 'Night' : 'Nights'}
                       </span>
                     </div>
 
-                    <div className="flex justify-between gap-4 text-stone-700 dark:text-stone-300">
+                    <div className="flex justify-between gap-4 text-slate-700 dark:text-stone-300">
                       <span>Party Size</span>
-                      <span className="text-stone-900 dark:text-stone-200 font-medium">
+                      <span className="text-slate-900 dark:text-stone-200 font-medium">
                         {guests} {guests === 1 ? 'Guest' : 'Guests'}
                       </span>
                     </div>
 
                     {selectedEnhancements.length > 0 && (
-                      <div className="pt-2 border-t border-stone-200 dark:border-stone-800">
-                        <span className="block text-[11px] text-stone-500 dark:text-stone-400 mb-1.5">
+                      <div className="pt-2 border-t border-slate-200 dark:border-stone-800">
+                        <span className="block text-[11px] text-slate-500 dark:text-stone-400 mb-1.5">
                           Selected Enhancements:
                         </span>
-                        <ul className="space-y-1 text-[11px] text-stone-800 dark:text-stone-200">
+                        <ul className="space-y-1 text-[11px] text-slate-800 dark:text-stone-200">
                           {selectedEnhancements.map((item) => (
                             <li key={item}>· {item}</li>
                           ))}
@@ -516,17 +519,17 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     )}
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-stone-200 dark:border-stone-800 space-y-2 text-[11px] text-stone-600 dark:text-stone-400">
+                  <div className="mt-6 pt-4 border-t border-slate-200 dark:border-stone-800 space-y-2 text-[11px] text-slate-600 dark:text-stone-400">
                     <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-amber-700 dark:text-amber-300/80" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-teal-700 dark:text-teal-300/80" />
                       <span>Dedicated 24/7 sanctuary butler included</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-amber-700 dark:text-amber-300/80" />
-                      <span>Complimentary thermal mineral onsen access</span>
+                      <CheckCircle2 className="w-3.5 h-3.5 text-teal-700 dark:text-teal-300/80" />
+                      <span>Complimentary infinity pool &amp; lounge access</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-amber-700 dark:text-amber-300/80" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-teal-700 dark:text-teal-300/80" />
                       <span>Full cancellation flexibility up to 14 days</span>
                     </div>
                   </div>
@@ -535,19 +538,19 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 <div className="pt-6 space-y-2">
                   <button
                     type="submit"
-                    className="w-full py-3 px-6 bg-amber-100 hover:bg-amber-200 text-stone-950 text-xs tracking-[0.2em] uppercase font-medium transition-colors shadow-sm cursor-pointer"
+                    className="w-full py-3 px-6 bg-teal-700 hover:bg-teal-800 dark:bg-teal-400 dark:hover:bg-teal-300 text-white dark:text-stone-950 text-xs tracking-[0.2em] uppercase font-medium transition-colors shadow-sm cursor-pointer"
                   >
                     Confirm Private Reservation
                   </button>
                   <button
                     type="button"
                     onClick={resetAndClose}
-                    className="w-full py-2.5 px-4 border border-stone-300 dark:border-stone-700 hover:border-stone-400 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white text-xs tracking-wider uppercase transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                    className="w-full py-2.5 px-4 border border-slate-300 dark:border-stone-700 hover:border-slate-500 text-slate-600 dark:text-stone-400 hover:text-slate-900 dark:hover:text-white text-xs tracking-wider uppercase transition-colors cursor-pointer flex items-center justify-center gap-1.5"
                   >
                     <ArrowLeft className="w-3.5 h-3.5" />
                     <span>Back to Resort</span>
                   </button>
-                  <p className="text-center text-[10px] text-stone-500 dark:text-stone-400 mt-1">
+                  <p className="text-center text-[10px] text-slate-500 dark:text-stone-400 mt-1">
                     Direct confirmation · Personal concierge coordination
                   </p>
                 </div>

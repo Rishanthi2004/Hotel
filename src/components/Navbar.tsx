@@ -40,8 +40,8 @@ export const Navbar: React.FC<NavbarProps> = ({
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/90 dark:bg-stone-950/85 backdrop-blur-md border-b border-stone-200 dark:border-stone-800/60 py-3 shadow-lg dark:shadow-2xl'
-            : 'bg-gradient-to-b from-stone-900/60 via-stone-900/20 to-transparent dark:from-stone-950/80 dark:via-stone-950/40 dark:to-transparent py-5'
+            ? 'bg-white/92 dark:bg-stone-950/85 backdrop-blur-md border-b border-slate-200/80 dark:border-stone-800/60 py-3 shadow-sm dark:shadow-2xl'
+            : 'bg-gradient-to-b from-slate-950/60 via-slate-950/20 to-transparent dark:from-stone-950/80 dark:via-stone-950/40 dark:to-transparent py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between gap-8">
@@ -51,8 +51,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={() => onNavigateSection?.('home')}
             className={`text-lg md:text-xl font-serif-luxury tracking-[0.25em] uppercase whitespace-nowrap shrink-0 transition-colors cursor-pointer ${
               isScrolled
-                ? 'text-stone-900 dark:text-stone-100 hover:text-amber-700 dark:hover:text-amber-200'
-                : 'text-stone-100 hover:text-amber-200'
+                ? 'text-slate-900 dark:text-stone-100 hover:text-teal-700 dark:hover:text-teal-200'
+                : 'text-white hover:text-teal-200'
             }`}
           >
             Aura
@@ -70,11 +70,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className={`transition-colors py-1 relative whitespace-nowrap shrink-0 cursor-pointer ${
                     isScrolled
                       ? isActive
-                        ? 'text-amber-700 dark:text-amber-200 font-semibold'
-                        : 'text-stone-700 dark:text-stone-300 hover:text-stone-950 dark:hover:text-white'
+                        ? 'text-teal-700 dark:text-teal-300 font-semibold'
+                        : 'text-slate-700 dark:text-stone-300 hover:text-slate-950 dark:hover:text-white'
                       : isActive
-                      ? 'text-amber-200 font-semibold'
-                      : 'text-stone-200 hover:text-white'
+                      ? 'text-teal-200 font-semibold'
+                      : 'text-slate-100 hover:text-white'
                   }`}
                 >
                   {link.label}
@@ -86,7 +86,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                           ? { duration: 0.1 }
                           : { type: 'spring', stiffness: 360, damping: 30 }
                       }
-                      className="absolute bottom-0 left-0 w-full h-[1px] bg-amber-600 dark:bg-amber-300/80"
+                      className={`absolute bottom-0 left-0 w-full h-[1.5px] ${
+                        isScrolled ? 'bg-teal-700 dark:bg-teal-300' : 'bg-teal-200'
+                      }`}
                     />
                   )}
                 </button>
@@ -100,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={onOpenBooking}
               type="button"
-              className="px-4 sm:px-5 py-2.5 text-xs tracking-[0.2em] font-medium uppercase text-stone-950 bg-amber-100 hover:bg-amber-200 dark:bg-amber-100 dark:hover:bg-amber-200 transition-colors shadow-sm whitespace-nowrap shrink-0 font-sans cursor-pointer"
+              className="px-4 sm:px-5 py-2.5 text-xs tracking-[0.2em] font-medium uppercase text-white bg-teal-700 hover:bg-teal-800 dark:bg-teal-600 dark:hover:bg-teal-500 transition-colors shadow-sm whitespace-nowrap shrink-0 font-sans cursor-pointer rounded-sm"
             >
               Reserve
             </button>
@@ -110,7 +112,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               type="button"
               className={`md:hidden p-2 ${
-                isScrolled ? 'text-stone-800 dark:text-stone-200' : 'text-stone-200'
+                isScrolled ? 'text-slate-800 dark:text-stone-200' : 'text-white'
               }`}
               aria-label="Toggle navigation"
             >
@@ -128,9 +130,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             animate={{ opacity: 1, y: 0 }}
             exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -12 }}
             transition={{ duration: shouldReduceMotion ? 0.15 : 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-40 bg-stone-50/98 dark:bg-stone-950/95 backdrop-blur-xl md:hidden pt-24 px-8 flex flex-col justify-between pb-8"
+            className="fixed inset-0 z-40 bg-[#F7FAFA]/98 dark:bg-stone-950/95 backdrop-blur-xl md:hidden pt-24 px-8 flex flex-col justify-between pb-8"
           >
-            <nav className="flex flex-col gap-5 text-sm tracking-[0.25em] uppercase font-serif-luxury text-stone-800 dark:text-stone-200">
+            <nav className="flex flex-col gap-5 text-sm tracking-[0.25em] uppercase font-serif-luxury text-slate-800 dark:text-stone-200">
               {navLinks.map((link, idx) => {
                 const isActive = activeSection === link.id;
                 return (
@@ -144,14 +146,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                       setMobileMenuOpen(false);
                       onNavigateSection?.(link.id);
                     }}
-                    className={`py-2 text-left border-b border-stone-200 dark:border-stone-800 transition-colors cursor-pointer flex items-center justify-between ${
+                    className={`py-2 text-left border-b border-slate-200 dark:border-stone-800 transition-colors cursor-pointer flex items-center justify-between ${
                       isActive
-                        ? 'text-amber-700 dark:text-amber-300 font-semibold'
-                        : 'text-stone-800 dark:text-stone-200 hover:text-amber-700 dark:hover:text-amber-200'
+                        ? 'text-teal-700 dark:text-teal-300 font-semibold'
+                        : 'text-slate-800 dark:text-stone-200 hover:text-teal-700 dark:hover:text-teal-200'
                     }`}
                   >
                     <span>{link.label}</span>
-                    {isActive && <span className="text-xs text-amber-600 dark:text-amber-400">●</span>}
+                    {isActive && <span className="text-xs text-teal-700 dark:text-teal-400">●</span>}
                   </motion.button>
                 );
               })}
@@ -164,7 +166,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onOpenBooking();
                 }}
                 type="button"
-                className="w-full py-3 text-xs tracking-[0.25em] font-medium uppercase text-stone-950 bg-amber-100 hover:bg-amber-200 transition-colors cursor-pointer font-sans"
+                className="w-full py-3 text-xs tracking-[0.25em] font-medium uppercase text-white bg-teal-700 hover:bg-teal-800 transition-colors cursor-pointer font-sans rounded-sm"
               >
                 Reserve Stay
               </button>

@@ -6,33 +6,33 @@ import { useScrollSectionVisible } from './ScrollSection';
 const LUXURY_EASE = [0.22, 1, 0.36, 1] as const;
 
 export const AboutUs: React.FC = () => {
-  const [selectedImage, setSelectedImage] = useState<'estate' | 'cottage'>('estate');
+  const [selectedImage, setSelectedImage] = useState<'lounge' | 'villa'>('lounge');
   const isVisible = useScrollSectionVisible();
   const shouldReduceMotion = useReducedMotion();
 
   const photos = {
-    estate: {
-      url: RESORT_DATA.userImages.colonialManorEstate,
-      title: "Estate Manor & Gardens",
-      caption: "Manicured garden lawns and outdoor terrace nestled beneath misty forest slopes"
+    lounge: {
+      url: RESORT_DATA.userImages.gardenLounge,
+      title: "Aura 8 — Shaded Garden Terrace Lounge",
+      caption: "Covered stone patio and lawn seating nestled beneath flowering tropical trees"
     },
-    cottage: {
-      url: RESORT_DATA.userImages.stoneCottage,
-      title: "Forest Stone Chalet",
-      caption: "Crafted stone architecture and manicured grounds nestled beneath pine-covered slopes"
+    villa: {
+      url: RESORT_DATA.userImages.oceanVilla,
+      title: "Aura 4 — Ocean Palm Balcony Villa",
+      caption: "Floor-to-ceiling glass balcony doors opening onto swaying palms and coastal horizon"
     }
   };
 
   const activePhoto = photos[selectedImage];
 
   const metrics = [
-    { value: "320 Ha", label: "Highland Estate" },
-    { value: "18", label: "Private Villas" },
-    { value: "38.5°C", label: "Thermal Waters" },
+    { value: "Aura 1–3", label: "Luxury Suites" },
+    { value: "Aura 4–5", label: "Private Villas" },
+    { value: "Aura 6–7", label: "Normal Rooms" },
   ];
 
   return (
-    <section id="about" className="py-14 md:py-20 bg-[#F5F2EB] dark:bg-stone-900/60 border-t border-stone-200 dark:border-stone-800/80 transition-colors overflow-hidden">
+    <section id="about" className="py-14 md:py-20 bg-[#EDF4F3] dark:bg-stone-900/60 border-t border-teal-900/10 dark:border-stone-800/80 transition-colors overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Real Photographic Showcase with Editorial Left Glide & Crossfade Switcher */}
@@ -52,7 +52,7 @@ export const AboutUs: React.FC = () => {
             }}
             className="lg:col-span-6 space-y-4"
           >
-            <div className="overflow-hidden border border-stone-300 dark:border-stone-700 aspect-[4/3] shadow-md dark:shadow-none bg-stone-200 dark:bg-stone-800 relative group">
+            <div className="overflow-hidden border border-teal-900/15 dark:border-stone-700 aspect-[4/3] shadow-md dark:shadow-none bg-white dark:bg-stone-800 relative group rounded-sm">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={selectedImage}
@@ -80,8 +80,8 @@ export const AboutUs: React.FC = () => {
             <div className="flex gap-2">
               {(
                 [
-                  { key: 'estate', label: 'Valley Estate Villa' },
-                  { key: 'cottage', label: 'Forest Stone Chalet' },
+                  { key: 'lounge', label: 'Aura 8 · Garden Lounge' },
+                  { key: 'villa', label: 'Aura 4 · Ocean Palm Villa' },
                 ] as const
               ).map(({ key, label }) => {
                 const isSelected = selectedImage === key;
@@ -93,15 +93,15 @@ export const AboutUs: React.FC = () => {
                     onClick={() => setSelectedImage(key)}
                     className={`relative text-xs px-3 py-1.5 border transition-colors cursor-pointer ${
                       isSelected
-                        ? 'border-amber-800 dark:border-amber-400 text-amber-900 dark:text-amber-200 font-medium'
-                        : 'border-stone-300 dark:border-stone-700 text-stone-600 dark:text-stone-400 hover:border-stone-400'
+                        ? 'border-teal-700 dark:border-teal-400 text-teal-900 dark:text-teal-200 font-medium'
+                        : 'border-slate-300 dark:border-stone-700 text-slate-600 dark:text-stone-400 hover:border-teal-600/50 bg-white/70 dark:bg-transparent'
                     }`}
                   >
                     {isSelected && (
                       <motion.span
                         layoutId="about-photo-pill"
                         transition={{ type: 'spring', stiffness: 320, damping: 28 }}
-                        className="absolute inset-0 bg-amber-900/10 dark:bg-amber-400/10 -z-0"
+                        className="absolute inset-0 bg-teal-700/10 dark:bg-teal-400/10 -z-0"
                       />
                     )}
                     <span className="relative z-10">{label}</span>
@@ -128,10 +128,10 @@ export const AboutUs: React.FC = () => {
                 ease: LUXURY_EASE,
               }}
             >
-              <p className="text-xs tracking-[0.25em] uppercase text-amber-700 dark:text-amber-300/80 font-medium mb-2">
+              <p className="text-xs tracking-[0.25em] uppercase text-teal-700 dark:text-teal-300/80 font-semibold mb-2">
                 About Aura
               </p>
-              <h2 className="text-3xl md:text-4xl font-serif-luxury text-stone-900 dark:text-stone-100 font-normal tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-serif-luxury text-slate-900 dark:text-stone-100 font-normal tracking-tight">
                 Where Nature Remains Untouched
               </h2>
             </motion.div>
@@ -150,13 +150,13 @@ export const AboutUs: React.FC = () => {
                 delay: isVisible && !shouldReduceMotion ? 0.22 : 0,
                 ease: LUXURY_EASE,
               }}
-              className="text-sm md:text-base text-stone-700 dark:text-stone-300 font-light leading-relaxed"
+              className="text-sm md:text-base text-slate-600 dark:text-stone-300 font-light leading-relaxed"
             >
-              Nestled among misty tea hills, Aura pairs stone-and-timber architecture with clean mountain air and tranquil valley views.
+              Surrounded by swaying coconut palms and manicured tropical gardens, Aura pairs warm timber villas, breezy coastal suites, and open-air seafront pavilions.
             </motion.p>
 
             {/* 3 Simple Minimalist Metrics */}
-            <div className="grid grid-cols-3 gap-4 pt-5 border-t border-stone-200 dark:border-stone-800">
+            <div className="grid grid-cols-3 gap-4 pt-5 border-t border-teal-900/10 dark:border-stone-800">
               {metrics.map((metric, idx) => (
                 <motion.div
                   key={metric.label}
@@ -174,10 +174,10 @@ export const AboutUs: React.FC = () => {
                     ease: LUXURY_EASE,
                   }}
                 >
-                  <span className="block text-2xl font-serif-luxury text-stone-900 dark:text-stone-100">
+                  <span className="block text-2xl font-serif-luxury text-slate-900 dark:text-stone-100">
                     {metric.value}
                   </span>
-                  <span className="text-[11px] text-stone-500 dark:text-stone-400 uppercase tracking-wider">
+                  <span className="text-[11px] text-slate-500 dark:text-stone-400 uppercase tracking-wider">
                     {metric.label}
                   </span>
                 </motion.div>

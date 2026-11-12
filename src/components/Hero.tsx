@@ -39,13 +39,13 @@ export const Hero: React.FC<HeroProps> = ({ onExploreVillas, onOpenBooking }) =>
       <div className="absolute inset-0 z-0 overflow-hidden">
         <img
           src={RESORT_DATA.userImages.heroPoolPavilion}
-          alt="Brick-and-terracotta resort pavilion overlooking a turquoise swimming pool, lily pond, and lush garden walkway"
+          alt="Warm brick-and-timber resort pavilion overlooking a glowing infinity pool and misty mountain valley at twilight"
           referrerPolicy="no-referrer"
-          className="absolute inset-0 w-full h-full object-cover object-center brightness-[1.09] contrast-[1.04] saturate-[1.06]"
+          className="absolute inset-0 w-full h-full object-cover object-center brightness-[1.06] contrast-[1.06] saturate-[1.05]"
         />
 
-        {/* Ultra-light centered legibility glow only, keeping the photo bright and clear */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_58%_44%_at_50%_46%,rgba(12,10,9,0.26)_0%,transparent_74%)] pointer-events-none" />
+        {/* Ultra-light centered legibility glow only, keeping the HD photo crisp and clear */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_56%_42%_at_50%_46%,rgba(12,10,9,0.12)_0%,transparent_72%)] pointer-events-none" />
       </div>
 
       {/* Main Headline & Centered Actions */}
@@ -86,7 +86,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreVillas, onOpenBooking }) =>
               whileTap={shouldReduceMotion ? undefined : { scale: 0.97 }}
               onClick={onOpenBooking}
               type="button"
-              className="px-7 py-3.5 bg-amber-100 hover:bg-amber-200 text-stone-950 text-xs tracking-[0.2em] uppercase font-medium transition-colors inline-flex items-center gap-2 shadow-xl hover:shadow-2xl cursor-pointer group"
+              className="px-7 py-3.5 bg-teal-700 hover:bg-teal-800 text-white text-xs tracking-[0.2em] uppercase font-medium transition-colors inline-flex items-center gap-2 shadow-xl hover:shadow-2xl cursor-pointer group rounded-sm"
             >
               Reserve Stay
               <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

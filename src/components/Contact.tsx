@@ -23,13 +23,13 @@ export const Contact: React.FC = () => {
   };
 
   const contactItems = [
-    { icon: Phone, label: 'Telephone', value: '+39 0463 90 8820', mono: true },
-    { icon: Mail, label: 'Confidential Email', value: 'concierge@aura.it', mono: true },
-    { icon: MapPin, label: 'Location', value: 'Italian Dolomites', mono: false },
+    { icon: Phone, label: 'Telephone', value: '+91 98422 08820', mono: true },
+    { icon: Mail, label: 'Confidential Email', value: 'concierge@auraresort.com', mono: true },
+    { icon: MapPin, label: 'Location', value: 'Aura Coastal Resort & Villas', mono: false },
   ];
 
   return (
-    <section id="contact" className="py-14 md:py-20 bg-[#FAF8F5] dark:bg-stone-950 border-t border-stone-200 dark:border-stone-800/80 transition-colors overflow-hidden">
+    <section id="contact" className="py-14 md:py-20 bg-[#F7FAFA] dark:bg-stone-950 border-t border-teal-900/10 dark:border-stone-800/80 transition-colors overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Direct Resort Details with Staggered Slide-In */}
@@ -49,18 +49,18 @@ export const Contact: React.FC = () => {
                 ease: LUXURY_EASE,
               }}
             >
-              <p className="text-xs tracking-[0.25em] uppercase text-amber-700 dark:text-amber-300/80 font-medium mb-2">
+              <p className="text-xs tracking-[0.25em] uppercase text-teal-700 dark:text-teal-300/80 font-semibold mb-2">
                 Concierge & Inquiries
               </p>
-              <h2 className="text-3xl md:text-4xl font-serif-luxury text-stone-900 dark:text-stone-100 font-normal tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-serif-luxury text-slate-900 dark:text-stone-100 font-normal tracking-tight">
                 Connect With Us
               </h2>
-              <p className="mt-2.5 text-xs md:text-sm text-stone-600 dark:text-stone-400 font-light leading-relaxed">
+              <p className="mt-2.5 text-xs md:text-sm text-slate-600 dark:text-stone-400 font-light leading-relaxed">
                 24/7 private concierge for stay bookings and arrival assistance.
               </p>
             </motion.div>
 
-            <div className="space-y-4 pt-4 border-t border-stone-200 dark:border-stone-800 text-xs">
+            <div className="space-y-4 pt-4 border-t border-teal-900/10 dark:border-stone-800 text-xs">
               {contactItems.map((item, idx) => {
                 const Icon = item.icon;
                 return (
@@ -81,10 +81,10 @@ export const Contact: React.FC = () => {
                     }}
                     className="flex items-start gap-3"
                   >
-                    <Icon className="w-4 h-4 text-amber-700 dark:text-amber-300 shrink-0 mt-0.5" />
+                    <Icon className="w-4 h-4 text-teal-700 dark:text-teal-300 shrink-0 mt-0.5" />
                     <div>
-                      <span className="block font-medium text-stone-900 dark:text-stone-200">{item.label}</span>
-                      <span className={`text-stone-600 dark:text-stone-400 ${item.mono ? 'font-mono text-[11px]' : ''}`}>
+                      <span className="block font-medium text-slate-900 dark:text-stone-200">{item.label}</span>
+                      <span className={`text-slate-600 dark:text-stone-400 ${item.mono ? 'font-mono text-[11px]' : ''}`}>
                         {item.value}
                       </span>
                     </div>
@@ -109,7 +109,7 @@ export const Contact: React.FC = () => {
               delay: isVisible && !shouldReduceMotion ? 0.16 : 0,
               ease: LUXURY_EASE,
             }}
-            className="lg:col-span-7 bg-white dark:bg-stone-900 p-6 md:p-8 border border-stone-200 dark:border-stone-800 shadow-sm dark:shadow-none"
+            className="lg:col-span-7 bg-white dark:bg-stone-900 p-6 md:p-8 border border-slate-200/80 dark:border-stone-800 shadow-sm dark:shadow-none rounded-sm"
           >
             <AnimatePresence mode="wait">
               {submitted ? (
@@ -125,14 +125,14 @@ export const Contact: React.FC = () => {
                     initial={shouldReduceMotion ? undefined : { scale: 0.5, rotate: -12 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ type: 'spring', stiffness: 280, damping: 18, delay: 0.08 }}
-                    className="inline-flex p-3 bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-500/40 rounded-full"
+                    className="inline-flex p-3 bg-teal-50 dark:bg-teal-950/60 border border-teal-200 dark:border-teal-500/40 rounded-full"
                   >
-                    <CheckCircle2 className="w-6 h-6 text-amber-700 dark:text-amber-300" />
+                    <CheckCircle2 className="w-6 h-6 text-teal-700 dark:text-teal-300" />
                   </motion.div>
-                  <h4 className="text-xl font-serif-luxury text-stone-900 dark:text-stone-100">
+                  <h4 className="text-xl font-serif-luxury text-slate-900 dark:text-stone-100">
                     Message Transmitted
                   </h4>
-                  <p className="text-xs text-stone-600 dark:text-stone-400 max-w-sm mx-auto leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-stone-400 max-w-sm mx-auto leading-relaxed">
                     Thank you, <strong>{name}</strong>. Our guest relations team will respond to <strong>{email}</strong> shortly.
                   </p>
                   <button
@@ -143,7 +143,7 @@ export const Contact: React.FC = () => {
                       setMessage('');
                     }}
                     type="button"
-                    className="mt-4 text-xs tracking-wider uppercase text-amber-800 dark:text-amber-200 hover:underline cursor-pointer"
+                    className="mt-4 text-xs tracking-wider uppercase text-teal-700 dark:text-teal-300 hover:underline cursor-pointer"
                   >
                     Send another message
                   </button>
@@ -160,7 +160,7 @@ export const Contact: React.FC = () => {
                 >
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-[10px] tracking-wider uppercase text-stone-600 dark:text-stone-400 mb-1 font-medium">
+                      <label className="block text-[10px] tracking-wider uppercase text-slate-600 dark:text-stone-400 mb-1 font-medium">
                         Your Name *
                       </label>
                       <input
@@ -168,13 +168,13 @@ export const Contact: React.FC = () => {
                         required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="e.g. Lord Alexander Sinclair"
-                        className="w-full bg-stone-50 dark:bg-stone-950 border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-200 text-xs py-2 px-3 focus:outline-none focus:border-amber-600 dark:focus:border-amber-300 rounded-none transition-colors"
+                        placeholder="e.g. Karthik Sundaram"
+                        className="w-full bg-[#F7FAFA] dark:bg-stone-950 border border-slate-300 dark:border-stone-700 text-slate-900 dark:text-stone-200 text-xs py-2 px-3 focus:outline-none focus:border-teal-700 dark:focus:border-teal-300 rounded-none transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[10px] tracking-wider uppercase text-stone-600 dark:text-stone-400 mb-1 font-medium">
+                      <label className="block text-[10px] tracking-wider uppercase text-slate-600 dark:text-stone-400 mb-1 font-medium">
                         Email Address *
                       </label>
                       <input
@@ -182,14 +182,14 @@ export const Contact: React.FC = () => {
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="sinclair@private.ch"
-                        className="w-full bg-stone-50 dark:bg-stone-950 border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-200 text-xs py-2 px-3 focus:outline-none focus:border-amber-600 dark:focus:border-amber-300 rounded-none transition-colors"
+                        placeholder="guest@example.com"
+                        className="w-full bg-[#F7FAFA] dark:bg-stone-950 border border-slate-300 dark:border-stone-700 text-slate-900 dark:text-stone-200 text-xs py-2 px-3 focus:outline-none focus:border-teal-700 dark:focus:border-teal-300 rounded-none transition-colors"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-[10px] tracking-wider uppercase text-stone-600 dark:text-stone-400 mb-1 font-medium">
+                    <label className="block text-[10px] tracking-wider uppercase text-slate-600 dark:text-stone-400 mb-1 font-medium">
                       Message or Special Requests
                     </label>
                     <textarea
@@ -197,7 +197,7 @@ export const Contact: React.FC = () => {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Preferred dates or special requests."
-                      className="w-full bg-stone-50 dark:bg-stone-950 border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-200 text-xs py-2 px-3 focus:outline-none focus:border-amber-600 dark:focus:border-amber-300 rounded-none transition-colors"
+                      className="w-full bg-[#F7FAFA] dark:bg-stone-950 border border-slate-300 dark:border-stone-700 text-slate-900 dark:text-stone-200 text-xs py-2 px-3 focus:outline-none focus:border-teal-700 dark:focus:border-teal-300 rounded-none transition-colors"
                     />
                   </div>
 
@@ -205,7 +205,7 @@ export const Contact: React.FC = () => {
                     whileHover={shouldReduceMotion ? undefined : { y: -1.5 }}
                     whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
                     type="submit"
-                    className="w-full py-2.5 px-5 bg-amber-100 hover:bg-amber-200 text-stone-950 text-xs tracking-[0.2em] uppercase font-medium transition-colors flex items-center justify-center gap-2 shadow-sm cursor-pointer group"
+                    className="w-full py-2.5 px-5 bg-teal-700 hover:bg-teal-800 text-white text-xs tracking-[0.2em] uppercase font-medium transition-colors flex items-center justify-center gap-2 shadow-sm cursor-pointer group rounded-sm"
                   >
                     <span>Send Message</span>
                     <Send className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

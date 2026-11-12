@@ -25,8 +25,8 @@ const GalleryMarqueeRow: React.FC<MarqueeRowProps> = ({
 
   return (
     <div className="relative w-full overflow-hidden group">
-      <div className="absolute left-0 top-0 bottom-0 w-6 sm:w-12 md:w-28 bg-gradient-to-r from-[#F5F2EB] dark:from-stone-900/90 to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-6 sm:w-12 md:w-28 bg-gradient-to-l from-[#F5F2EB] dark:from-stone-900/90 to-transparent z-10 pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-6 sm:w-12 md:w-28 bg-gradient-to-r from-[#EDF4F3] dark:from-stone-900/90 to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-6 sm:w-12 md:w-28 bg-gradient-to-l from-[#EDF4F3] dark:from-stone-900/90 to-transparent z-10 pointer-events-none" />
 
       <div
         className={`flex gap-3 sm:gap-5 md:gap-6 w-max ${marqueeClass} ${
@@ -37,7 +37,7 @@ const GalleryMarqueeRow: React.FC<MarqueeRowProps> = ({
           <div
             key={`${photo.id}-${idx}`}
             onClick={() => onSelectPhoto(photo)}
-            className="relative w-[195px] sm:w-[245px] md:w-[285px] lg:w-[320px] aspect-[4/3] overflow-hidden bg-stone-200 dark:bg-stone-800 border border-stone-300 dark:border-stone-700 cursor-pointer group/card shadow-md hover:shadow-xl dark:shadow-none transition-[transform,box-shadow] duration-500 hover:-translate-y-1 shrink-0"
+            className="relative w-[195px] sm:w-[245px] md:w-[285px] lg:w-[320px] aspect-[4/3] overflow-hidden bg-white dark:bg-stone-800 border border-teal-900/15 dark:border-stone-700 cursor-pointer group/card shadow-md hover:shadow-xl dark:shadow-none transition-[transform,box-shadow] duration-500 hover:-translate-y-1 shrink-0 rounded-sm"
           >
             <img
               src={photo.imageUrl}
@@ -45,14 +45,14 @@ const GalleryMarqueeRow: React.FC<MarqueeRowProps> = ({
               referrerPolicy="no-referrer"
               className={`w-full h-full object-cover ${photo.imagePosition ?? 'object-center'} contrast-[1.03] saturate-[1.04] transition-transform duration-700 group-hover/card:scale-105`}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/75 via-transparent to-transparent opacity-70 group-hover/card:opacity-85 transition-opacity" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent opacity-70 group-hover/card:opacity-85 transition-opacity" />
 
-            <div className="absolute top-2 right-2 sm:top-3 sm:right-3 p-1.5 sm:p-2 bg-stone-950/70 border border-white/10 text-stone-200 opacity-0 group-hover/card:opacity-100 transition-opacity backdrop-blur-sm">
-              <Maximize className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-200" />
+            <div className="absolute top-2 right-2 sm:top-3 sm:right-3 p-1.5 sm:p-2 bg-slate-950/70 border border-white/10 text-slate-200 opacity-0 group-hover/card:opacity-100 transition-opacity backdrop-blur-sm">
+              <Maximize className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-teal-200" />
             </div>
 
             <div className="absolute bottom-2.5 left-2.5 right-2.5 sm:bottom-3 sm:left-4 sm:right-4 z-10">
-              <span className="inline-block text-[8px] sm:text-[9px] uppercase tracking-widest text-amber-300 bg-stone-950/70 px-1.5 sm:px-2 py-0.5 mb-1 sm:mb-1.5 backdrop-blur-sm">
+              <span className="inline-block text-[8px] sm:text-[9px] uppercase tracking-widest text-teal-200 bg-slate-950/70 px-1.5 sm:px-2 py-0.5 mb-1 sm:mb-1.5 backdrop-blur-sm">
                 {photo.category}
               </span>
               <h3 className="text-xs sm:text-sm font-serif-luxury text-stone-100 line-clamp-1">
@@ -134,7 +134,7 @@ export const MovingGallery: React.FC = () => {
   return (
     <section
       id="gallery"
-      className="py-12 sm:py-14 md:py-20 bg-[#F5F2EB] dark:bg-stone-900/60 border-t border-stone-200 dark:border-stone-800/80 relative overflow-hidden transition-colors"
+      className="py-12 sm:py-14 md:py-20 bg-[#EDF4F3] dark:bg-stone-900/60 border-t border-teal-900/10 dark:border-stone-800/80 relative overflow-hidden transition-colors"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 mb-6 sm:mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4">
         <motion.div
@@ -152,14 +152,14 @@ export const MovingGallery: React.FC = () => {
             ease: LUXURY_EASE,
           }}
         >
-          <p className="text-xs tracking-[0.25em] uppercase text-amber-700 dark:text-amber-300/80 font-medium mb-1.5 sm:mb-2">
+          <p className="text-xs tracking-[0.25em] uppercase text-teal-700 dark:text-teal-300/80 font-semibold mb-1.5 sm:mb-2">
             Visual Expedition
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif-luxury text-stone-900 dark:text-stone-100 font-normal tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif-luxury text-slate-900 dark:text-stone-100 font-normal tracking-tight">
             Moving Gallery
           </h2>
-          <p className="mt-1.5 sm:mt-2 text-[11px] sm:text-xs text-stone-600 dark:text-stone-400 font-light">
-            Estate grounds, rooms, suites, and mountain vistas.
+          <p className="mt-1.5 sm:mt-2 text-[11px] sm:text-xs text-slate-600 dark:text-stone-400 font-light">
+            Luxury suites, private villas, normal rooms, and coastal garden pavilions.
           </p>
         </motion.div>
 
@@ -180,12 +180,12 @@ export const MovingGallery: React.FC = () => {
           }}
           onClick={() => setIsPlaying((prev) => !prev)}
           type="button"
-          className="px-3 py-1.5 sm:px-4 sm:py-2 bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-800 text-stone-700 dark:text-stone-300 text-[11px] sm:text-xs tracking-wider uppercase flex items-center gap-2 hover:border-stone-400 transition-colors self-start sm:self-auto cursor-pointer shadow-sm"
+          className="px-3 py-1.5 sm:px-4 sm:py-2 bg-white dark:bg-stone-900 border border-slate-200 dark:border-stone-800 text-slate-700 dark:text-stone-300 text-[11px] sm:text-xs tracking-wider uppercase flex items-center gap-2 hover:border-teal-600/50 transition-colors self-start sm:self-auto cursor-pointer shadow-sm"
         >
           {isPlaying ? (
-            <Pause className="w-3.5 h-3.5 text-amber-700 dark:text-amber-400" />
+            <Pause className="w-3.5 h-3.5 text-teal-700 dark:text-teal-400" />
           ) : (
-            <Play className="w-3.5 h-3.5 text-amber-700 dark:text-amber-400" />
+            <Play className="w-3.5 h-3.5 text-teal-700 dark:text-teal-400" />
           )}
           <span>{isPlaying ? 'Pause Motion' : 'Resume Motion'}</span>
         </motion.button>

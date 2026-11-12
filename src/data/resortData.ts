@@ -1,8 +1,13 @@
+export type ResidenceCategory = 'Luxury' | 'Villa' | 'Normal';
+export type FacilityCategory = ResidenceCategory | 'Facilities';
+
 export interface Villa {
   id: string;
+  code: string;
   name: string;
+  subtitle: string;
   tagline: string;
-  category: string;
+  category: ResidenceCategory;
   sqm: number;
   capacity: string;
   bed: string;
@@ -10,10 +15,28 @@ export interface Villa {
   pricePerNight: number;
   description: string;
   coverImage: string;
+  imagePosition?: string;
   gallery: { url: string; caption: string }[];
   features: string[];
   specs: { label: string; value: string }[];
   floorPlanSummary: string;
+}
+
+export interface FacilityItem {
+  id: string;
+  code: string;
+  subtitle: string;
+  category: FacilityCategory;
+  imageUrl: string;
+  imagePosition?: string;
+  sqm?: number;
+  capacity: string;
+  layout: string;
+  view: string;
+  description: string;
+  cardHighlights: string[];
+  highlights: string[];
+  villaId?: string;
 }
 
 export interface DiningVenue {
@@ -52,7 +75,7 @@ export interface Experience {
 export interface GalleryPhoto {
   id: string;
   title: string;
-  category: 'architecture' | 'villas' | 'dining' | 'wellness' | 'nature';
+  category: 'luxury' | 'villa' | 'normal' | 'facilities';
   imageUrl: string;
   imagePosition?: string;
   cameraExif: string;
@@ -60,454 +83,438 @@ export interface GalleryPhoto {
   aspect: 'landscape' | 'portrait' | 'wide';
 }
 
-export const RESORT_DATA = {
-  name: "Aura",
-  established: 2021,
-  elevation: "1,420m Above Sea Level",
-  location: "Valle di Sole, Alpine Dolomite Range",
-  coordinates: "46°21'32\"N 10°52'19\"E",
-  // User-provided real resort photography assets
-  userImages: {
-    heroPoolPavilion: "/assets/hero-pool-pavilion-hd.jpg",
-    heroHillsideRetreat: "/assets/hero-hillside-retreat.jpg",
-    cliffTimberBungalow: "/assets/gallery-cliff-timber-bungalow.jpg",
-    mountainRidgeGrounds: "/assets/gallery-mountain-ridge-grounds.jpg",
-    hillsideTwinVillas: "/assets/gallery-hillside-twin-villas.jpg",
-    colonialManorEstate: "/assets/gallery-colonial-manor-estate.jpg",
-    teaValleyTrail: "/assets/aistudio/cb6b93e93c3a24143083eef6350ab534_cd4c702d.jpg",
-    stoneCottage: "/assets/aistudio/53648d5ddcc5a3211416b17975e2712e_d05d197b.jpg",
-    emeraldLake: "/assets/aistudio/13a9fc9d840154fec5f5a4ffc1093d5c_5ec2d6eb.jpg",
-    mistyChalet: "/assets/aistudio/b01d3d3e628697c8bb82c00b8cd96ff1_2e27420a.jpg"
+const VILLAS: Villa[] = [
+  {
+    id: 'aura-1',
+    code: 'Aura 1',
+    name: 'Aura 1 — Vaulted King Luxury Suite',
+    subtitle: 'Vaulted King Luxury Suite',
+    tagline: 'Airy vaulted ceilings, handcrafted timber lounge seating, and private palm-view balcony',
+    category: 'Luxury',
+    sqm: 62,
+    capacity: 'Up to 2 Guests',
+    bed: '1 King Bed',
+    poolType: 'Resort Pool & Private Palm Terrace Access',
+    pricePerNight: 420,
+    description:
+      'Our signature luxury suite pairs soaring vaulted ceilings with warm woven textiles, twin wooden armchairs, a built-in window reading bay, and full-height glass balcony doors opening onto swaying tropical palms.',
+    coverImage: '/assets/aura-01.jpg',
+    imagePosition: 'object-[50%_62%]',
+    gallery: [
+      { url: '/assets/aura-01.jpg', caption: 'Aura 1 vaulted king luxury suite with reading nook and balcony' },
+      { url: '/assets/aura-08.jpg', caption: 'Steps away from the shaded garden terrace lounge' },
+    ],
+    features: [
+      'Vaulted high ceiling with matte-black designer fan',
+      'King bed with woven natural runner & crisp linens',
+      'Two timber lounge armchairs & round coffee table',
+      'Built-in sunlit bay window reading seat',
+      'Wall-mounted flat-screen TV & writing desk',
+      'Private balcony overlooking tropical palm groves',
+    ],
+    specs: [
+      { label: 'Suite Area', value: '62 m²' },
+      { label: 'Category', value: 'Luxury Suite' },
+      { label: 'Bedding', value: '1 King Bed' },
+      { label: 'Outdoor Space', value: 'Private Balcony Terrace' },
+    ],
+    floorPlanSummary:
+      'Expansive open-plan luxury suite combining a restful king sleeping alcove, twin-armchair sitting lounge, sunlit window bench, and timber balcony doors.',
   },
-  heroDroneImage: "/assets/hero-hillside-retreat.jpg",
-  infinityPoolImage: "/assets/gallery-hillside-twin-villas.jpg",
-  bedroomInteriorImage: "/assets/gallery-cliff-timber-bungalow.jpg",
-  diningTwilightImage: "/assets/gallery-colonial-manor-estate.jpg",
-  spaWellnessImage: "/assets/aistudio/53648d5ddcc5a3211416b17975e2712e_d05d197b.jpg",
-  naturePathwayImage: "/assets/hero-hillside-retreat.jpg",
-  
+  {
+    id: 'aura-2',
+    code: 'Aura 2',
+    name: 'Aura 2 — Garden Veranda Luxury Suite',
+    subtitle: 'Garden Veranda Luxury Suite',
+    tagline: 'Fluted timber accent wall, sofa lounge, and glass door to private lush garden patio',
+    category: 'Luxury',
+    sqm: 58,
+    capacity: 'Up to 2 Guests',
+    bed: '1 King Bed',
+    poolType: 'Resort Pool & Private Garden Veranda',
+    pricePerNight: 390,
+    description:
+      'Designed around calm natural textures, Aura 2 showcases a vertical fluted timber feature wall, warm sculptural pendant light, plush upholstered sofa lounge, and direct garden veranda access.',
+    coverImage: '/assets/aura-02.jpg',
+    imagePosition: 'object-[50%_60%]',
+    gallery: [
+      { url: '/assets/aura-02.jpg', caption: 'Aura 2 fluted timber suite with sofa lounge and garden door' },
+      { url: '/assets/aura-08.jpg', caption: 'Surrounded by manicured garden walkways and courtyard seating' },
+    ],
+    features: [
+      'Upholstered King bed with fluted timber headboard wall',
+      'Sculptural warm-glow bedside pendant lighting',
+      'Plush window-side sofa lounge & patterned area rug',
+      'Private garden veranda with outdoor seating',
+      'Tray-ceiling ambient cove lighting & ceiling fan',
+      'In-room telephone, safe & high-speed Wi-Fi',
+    ],
+    specs: [
+      { label: 'Suite Area', value: '58 m²' },
+      { label: 'Category', value: 'Luxury Suite' },
+      { label: 'Bedding', value: '1 King Bed' },
+      { label: 'Outdoor Space', value: 'Private Garden Veranda' },
+    ],
+    floorPlanSummary:
+      'Thoughtfully zoned luxury bedroom and sitting lounge opening directly onto a private tree-shaded veranda.',
+  },
+  {
+    id: 'aura-3',
+    code: 'Aura 3',
+    name: 'Aura 3 — Cove-Lit Family Luxury Suite',
+    subtitle: 'Cove-Lit Family Luxury Suite',
+    tagline: 'Two plush double platform beds with warm cove lighting and panoramic balcony seating',
+    category: 'Luxury',
+    sqm: 68,
+    capacity: 'Up to 4 Guests',
+    bed: '2 Double Platform Beds',
+    poolType: 'Resort Pool & Panoramic Balcony Access',
+    pricePerNight: 460,
+    description:
+      'Tailored for families or small groups seeking elevated comfort, Aura 3 offers two generous timber platform beds, warm architectural cove lighting, and wide glass doors opening to a breezy balcony with lounge chairs.',
+    coverImage: '/assets/aura-03.jpg',
+    imagePosition: 'object-[50%_62%]',
+    gallery: [
+      { url: '/assets/aura-03.jpg', caption: 'Aura 3 cove-lit double suite with timber-framed balcony' },
+      { url: '/assets/aura-08.jpg', caption: 'Steps from the shaded courtyard garden lounge' },
+    ],
+    features: [
+      'Two plush double beds on custom teak platform frames',
+      'Warm perimeter recessed cove lighting & ceiling fan',
+      'Full-width timber-framed glass balcony doors',
+      'Private balcony with twin wooden lounge chairs',
+      'Vanity desk, wardrobe & en-suite luxury bathroom',
+      'Botanical wall paneling & sheer blackout drapery',
+    ],
+    specs: [
+      { label: 'Suite Area', value: '68 m²' },
+      { label: 'Category', value: 'Luxury Family Suite' },
+      { label: 'Bedding', value: '2 Double Beds' },
+      { label: 'Outdoor Space', value: 'Furnished View Balcony' },
+    ],
+    floorPlanSummary:
+      'Generous twin-double luxury sanctuary with continuous tiled flooring, full-height glazing, and an outdoor balcony overlooking tropical greenery.',
+  },
+  {
+    id: 'aura-4',
+    code: 'Aura 4',
+    name: 'Aura 4 — Ocean Palm Balcony Villa',
+    subtitle: 'Ocean Palm Balcony Villa',
+    tagline: 'Dark timber floors and floor-to-ceiling black glass doors opening to ocean & palm views',
+    category: 'Villa',
+    sqm: 48,
+    capacity: 'Up to 2 Guests',
+    bed: '2 Twin Beds',
+    poolType: 'Beachfront & Resort Pool Access',
+    pricePerNight: 310,
+    description:
+      'Framing turquoise ocean horizons through tall coconut palms, Aura 4 pairs dark hardwood-style floors and warm wall sconces with an open balcony terrace, work desk, and breezy coastal light.',
+    coverImage: '/assets/aura-04.jpg',
+    imagePosition: 'object-[50%_58%]',
+    gallery: [
+      { url: '/assets/aura-04.jpg', caption: 'Aura 4 ocean palm balcony villa with coastal horizon view' },
+      { url: '/assets/aura-08.jpg', caption: 'Short stroll to the shaded garden terrace lounge' },
+    ],
+    features: [
+      'Direct panoramic ocean & coconut palm balcony view',
+      'Two comfortable twin beds with warm ambient sconces',
+      'Floor-to-ceiling black-framed glass balcony doors',
+      'Outdoor balcony seating for sunrise & sunset views',
+      'Dedicated timber study desk & designer chair',
+      'Dark wood-grain flooring & blackout curtains',
+    ],
+    specs: [
+      { label: 'Villa Area', value: '48 m²' },
+      { label: 'Category', value: 'Villa' },
+      { label: 'Bedding', value: '2 Twin Beds' },
+      { label: 'Outdoor Space', value: 'Ocean-View Glass Balcony' },
+    ],
+    floorPlanSummary:
+      'Bright coastal villa room oriented directly toward the ocean through a full-wall glass facade and private balcony.',
+  },
+  {
+    id: 'aura-5',
+    code: 'Aura 5',
+    name: 'Aura 5 — Coastal Harbor View Villa',
+    subtitle: 'Coastal Harbor View Villa',
+    tagline: 'Sunny king bedroom with air-conditioning, ceiling fan, and scenic coastal harbor balcony',
+    category: 'Villa',
+    sqm: 44,
+    capacity: 'Up to 2 Guests',
+    bed: '1 King Bed',
+    poolType: 'Resort Pool & Coastal Balcony',
+    pricePerNight: 285,
+    description:
+      'Elevated for sweeping coastal bay and island ridge vistas, Aura 5 blends crisp white linens and thoughtful resort hospitality touches with a private outdoor balcony furnished for morning coffee.',
+    coverImage: '/assets/aura-05.jpg',
+    imagePosition: 'object-[50%_55%]',
+    gallery: [
+      { url: '/assets/aura-05.jpg', caption: 'Aura 5 king bedroom overlooking coastal bay and hills' },
+      { url: '/assets/aura-08.jpg', caption: 'Full resort dining and garden amenities included' },
+    ],
+    features: [
+      'Private balcony overlooking bay waters & green hills',
+      'King bed with signature rolled towel welcome art',
+      'Split air-conditioning & classic ceiling fan',
+      'Flat-screen TV, vanity mirror & timber storage cabinet',
+      'Outdoor bistro table & twin balcony chairs',
+      'Full blackout curtains & attached bathroom',
+    ],
+    specs: [
+      { label: 'Villa Area', value: '44 m²' },
+      { label: 'Category', value: 'Villa' },
+      { label: 'Bedding', value: '1 King Bed' },
+      { label: 'Outdoor Space', value: 'Bay-View Bistro Balcony' },
+    ],
+    floorPlanSummary:
+      'Airy upper-level villa room featuring an en-suite bath, media console, vanity corner, and wide sliding doors to a coastal balcony.',
+  },
+  {
+    id: 'aura-6',
+    code: 'Aura 6',
+    name: 'Aura 6 — Standard Comfort Queen Room',
+    subtitle: 'Standard Comfort Queen Room',
+    tagline: 'Warm wooden queen bed with air-conditioning, kettle bar, and restful blackout drapery',
+    category: 'Normal',
+    sqm: 34,
+    capacity: 'Up to 2 Guests',
+    bed: '1 Queen Bed',
+    poolType: 'Resort Pool & Garden Access',
+    pricePerNight: 195,
+    description:
+      'A serene, practical sanctuary featuring a handcrafted solid-wood queen bed frame, crisp split air-conditioning, electric kettle with complimentary water, intercom phone, and full blackout curtains.',
+    coverImage: '/assets/aura-06.jpg',
+    imagePosition: 'object-[50%_62%]',
+    gallery: [
+      { url: '/assets/aura-06.jpg', caption: 'Aura 6 standard comfort queen room with wooden bedframe' },
+    ],
+    features: [
+      'Solid-wood Queen bed with warm olive accent cushions',
+      'High-efficiency split air-conditioning & ceiling fan',
+      'Electric kettle & complimentary bottled drinking water',
+      'Direct-dial intercom telephone & bedside outlets',
+      'Heavy blackout drapes for uninterrupted rest',
+      'Attached modern bathroom with fresh towels',
+    ],
+    specs: [
+      { label: 'Room Area', value: '34 m²' },
+      { label: 'Category', value: 'Normal' },
+      { label: 'Bedding', value: '1 Queen Bed' },
+      { label: 'Access', value: 'Pool & Gardens Included' },
+    ],
+    floorPlanSummary:
+      'Clean, well-appointed standard queen room designed for effortless comfort with easy access to all resort grounds.',
+  },
+  {
+    id: 'aura-7',
+    code: 'Aura 7',
+    name: 'Aura 7 — Standard Cozy Twin Room',
+    subtitle: 'Standard Cozy Twin Room',
+    tagline: 'Contemporary twin beds with wood-panel headboards, warm bedside lamp, and serene calm',
+    category: 'Normal',
+    sqm: 32,
+    capacity: 'Up to 2 Guests',
+    bed: '2 Twin Beds',
+    poolType: 'Resort Pool & Garden Access',
+    pricePerNight: 185,
+    description:
+      'Ideal for friends or solo travelers seeking crisp simplicity, Aura 7 pairs twin striped-linen beds against tailored wood-grain headboard panels with soft bedside reading light and cool tiled floors.',
+    coverImage: '/assets/aura-07.jpg',
+    imagePosition: 'object-[50%_60%]',
+    gallery: [
+      { url: '/assets/aura-07.jpg', caption: 'Aura 7 standard cozy twin room with wood-panel headboards' },
+    ],
+    features: [
+      'Two single twin beds with crisp striped cotton linens',
+      'Floor-to-ceiling wood-grain headboard paneling',
+      'Warm shared bedside reading lamp & framed artwork',
+      'Air-conditioning & private attached bathroom',
+      'Fresh bath & hand towel set provided daily',
+      'High-speed Wi-Fi & daily housekeeping',
+    ],
+    specs: [
+      { label: 'Room Area', value: '32 m²' },
+      { label: 'Category', value: 'Normal' },
+      { label: 'Bedding', value: '2 Twin Beds' },
+      { label: 'Access', value: 'Pool & Gardens Included' },
+    ],
+    floorPlanSummary:
+      'Streamlined twin bedroom offering calm minimalist finishes, bright neutral walls, and full access to Aura resort facilities.',
+  },
+];
+
+const RESORT_FACILITIES: FacilityItem[] = [
+  ...VILLAS.map((v) => ({
+    id: v.id,
+    code: v.code,
+    subtitle: v.subtitle,
+    category: v.category as FacilityCategory,
+    imageUrl: v.coverImage,
+    imagePosition: v.imagePosition,
+    sqm: v.sqm,
+    capacity: v.capacity,
+    layout: v.bed,
+    view: v.specs[3]?.value ?? 'Resort View',
+    description: v.description,
+    cardHighlights: [
+      v.bed,
+      `${v.capacity} · ${v.sqm} m²`,
+      v.specs[3]?.value ?? 'Resort Access',
+    ],
+    highlights: v.features.slice(0, 5),
+    villaId: v.id,
+  })),
+  {
+    id: 'aura-8',
+    code: 'Aura 8',
+    subtitle: 'Shaded Garden Terrace Lounge',
+    category: 'Facilities',
+    imageUrl: '/assets/aura-08.jpg',
+    imagePosition: 'object-[50%_52%]',
+    capacity: 'Outdoor Lounge & Café',
+    layout: 'Covered Stone Patio & Lawn',
+    view: 'Tropical Garden & Café Seating',
+    description:
+      'A breezy shaded pavilion bordered by flowering flame-tree blossoms and potted palms, opening out onto an inviting sunlit stone patio and lawn seating area for afternoon tea and quiet conversation.',
+    cardHighlights: [
+      'Covered Patio Seating',
+      'Tropical Garden & Lawn',
+      'Outdoor Tea & Coffee Lounge',
+    ],
+    highlights: [
+      'Shaded stone-paved courtyard & outdoor lounge tables',
+      'Surrounded by blooming tropical flame trees & palms',
+      'Relaxed open-air spot for coffee & evening drinks',
+      'Warm heritage lantern lighting after dusk',
+      'Seamless indoor-outdoor flow to garden lawns',
+    ],
+  },
+];
+
+export const RESORT_DATA = {
+  name: 'Aura',
+  established: 2021,
+  elevation: 'Coastal Palm & Garden Sanctuary',
+  location: 'Aura Coastal Resort & Villas',
+  coordinates: 'Tropical Garden & Seafront Estate',
+  userImages: {
+    heroPoolPavilion: '/assets/hero-infinity-pool.jpg',
+    oceanVilla: '/assets/aura-04.jpg',
+    gardenLounge: '/assets/aura-08.jpg',
+    poolCourtyard: '/assets/facilities-pool-bg.jpg',
+  },
+
   stats: [
-    { label: "Private Acreage", value: "320 Hectares" },
-    { label: "Private Villas", value: "18 Residences" },
-    { label: "Thermal Spring Temp", value: "38.5°C" },
-    { label: "Elevation", value: "1,420 Meters" },
+    { label: 'Luxury Suites', value: 'Aura 1 – 3' },
+    { label: 'Private Villas', value: 'Aura 4 – 5' },
+    { label: 'Normal Rooms', value: 'Aura 6 – 7' },
+    { label: 'Garden Lounge', value: 'Aura 8' },
   ],
 
-  villas: [
-    {
-      id: "celestial-horizon",
-      name: "The Celestial Horizon Villa",
-      tagline: "Cantilevered glass pavilion overlooking sunlit tea terraces and mountain ridges",
-      category: "Cliffside Residence",
-      sqm: 460,
-      capacity: "Up to 4 Guests",
-      bed: "Two King Master Bedrooms",
-      poolType: "22m Heated Mineral Infinity Pool",
-      pricePerNight: 2850,
-      description: "Perched dramatically above the mist layer, the Celestial Horizon Villa combines warm timber and floor-to-ceiling glass framing unobstructed views of lush mountain terraces and golden sunrise.",
-      coverImage: "/assets/gallery-hillside-twin-villas.jpg",
-      gallery: [
-        { url: "/assets/gallery-hillside-twin-villas.jpg", caption: "Hillside twin villas framed by lush mountain greenery" },
-        { url: "/assets/aistudio/cb6b93e93c3a24143083eef6350ab534_cd4c702d.jpg", caption: "Sun-drenched morning trails through the private estate" },
-        { url: "/assets/aistudio/13a9fc9d840154fec5f5a4ffc1093d5c_5ec2d6eb.jpg", caption: "Emerald mountain lake panorama visible from the upper terrace" }
-      ],
-      features: [
-        "Private 22-meter heated alpine infinity pool",
-        "Panoramic Finnish dry sauna with glazed forest wall",
-        "Dedicated 24-hour private sanctuary butler",
-        "Sub-zero temperature-controlled wine room",
-        "Handcrafted larch wood dining terrace for 8 guests",
-        "Complimentary evening fireside aperitivo"
-      ],
-      specs: [
-        { label: "Interior Living Area", value: "340 m²" },
-        { label: "Exterior Teak Decks", value: "120 m²" },
-        { label: "Bathrooms", value: "2 En-suite with volcanic baths" },
-        { label: "Exposure", value: "South-West sunset facing" }
-      ],
-      floorPlanSummary: "Two symmetrical master suites flanking a soaring double-height stone living pavilion with suspended wood stove and floating outdoor terrace."
-    },
-    {
-      id: "ancient-pine-pavilion",
-      name: "The Ancient Pine Pavilion",
-      tagline: "Deep secluded luxury immersed inside old-growth cedar and stone garden cottage",
-      category: "Forest Pavilion",
-      sqm: 320,
-      capacity: "2 Guests",
-      bed: "One Signature King Suite",
-      poolType: "Private Cedar Hot Spring Tub",
-      pricePerNight: 1950,
-      description: "Nestled directly into the whispering evergreen forest, this stone and cedar pavilion features manicured lawns, heated slate radiant floors, and an outdoor stone hot spring onsen fed by natural mountain springs.",
-      coverImage: "/assets/aistudio/53648d5ddcc5a3211416b17975e2712e_d05d197b.jpg",
-      gallery: [
-        { url: "/assets/aistudio/53648d5ddcc5a3211416b17975e2712e_d05d197b.jpg", caption: "Forest stone cottage and lawn framed by pine slopes" },
-        { url: "/assets/gallery-cliff-timber-bungalow.jpg", caption: "Timber balcony deck overlooking emerald mountain cliffs" },
-        { url: "/assets/aistudio/cb6b93e93c3a24143083eef6350ab534_cd4c702d.jpg", caption: "Direct access to sunlit forest hiking and tea plantation trails" }
-      ],
-      features: [
-        "Private mineral-fed outdoor cedar onsen tub",
-        "Wood-burning Swedish fireplace with seasoned birch logs",
-        "High-definition telescope for alpine astrophotography",
-        "Bang & Olufsen bespoke acoustic sound architecture",
-        "In-villa organic apothecary tea and botanical bar",
-        "Private path leading to meditation forest platform"
-      ],
-      specs: [
-        { label: "Interior Living Area", value: "220 m²" },
-        { label: "Exterior Teak Decks", value: "100 m²" },
-        { label: "Bathrooms", value: "1 Spa bath with rain shower & steam" },
-        { label: "Exposure", value: "East morning-light facing" }
-      ],
-      floorPlanSummary: "Open-concept circular sanctuary centered around an architectural hearth, opening via three pocket-glass doors onto an ancient moss glade."
-    },
-    {
-      id: "ridge-valley-suite",
-      name: "The Ridge Valley Residence",
-      tagline: "Unobstructed panorama of mountain mist waterfalls and cloud inversions",
-      category: "Panoramic Villa",
-      sqm: 380,
-      capacity: "Up to 3 Guests",
-      bed: "One King + One Daybed Pavilion",
-      poolType: "14m Glass-Front Infinity Plunge Pool",
-      pricePerNight: 2350,
-      description: "Suspended on a scenic promontory, the Ridge Valley Residence offers front-row seats to the drama of shifting mountain weather and valley mist rivers. Enjoy dawn tranquility on your stone and cedar terrace.",
-      coverImage: "/assets/hero-hillside-retreat.jpg",
-      gallery: [
-        { url: "/assets/hero-hillside-retreat.jpg", caption: "Terraced hillside cottages and winding stone garden stairs" },
-        { url: "/assets/gallery-mountain-ridge-grounds.jpg", caption: "Mountain ridge courtyard and firepit overlooking the valley" },
-        { url: "/assets/aistudio/13a9fc9d840154fec5f5a4ffc1093d5c_5ec2d6eb.jpg", caption: "Lake and valley vistas surrounding the property" }
-      ],
-      features: [
-        "14-meter heated glass-front cantilever plunge pool",
-        "Sunken fire pit with continuous mountain panorama",
-        "Private outdoor shower set within wild thyme gardens",
-        "Custom mattress crafted with organic wool and horsehair",
-        "Daily in-villa sommelier wine pairing flight",
-        "Private golf cart with chauffeur service"
-      ],
-      specs: [
-        { label: "Interior Living Area", value: "260 m²" },
-        { label: "Exterior Teak Decks", value: "120 m²" },
-        { label: "Bathrooms", value: "2 Full bathrooms with marble tubs" },
-        { label: "Exposure", value: "360-degree panoramic ridge" }
-      ],
-      floorPlanSummary: "Linear architectural wing maximizing natural southern solar gain, featuring private bedroom sanctuary, library study, and outdoor thermal lounge."
-    },
-    {
-      id: "grand-estate",
-      name: "The Grand Alpine Estate",
-      tagline: "The crown retreat: secluded estate nestled in rolling misty tea hills",
-      category: "Presidential Estate",
-      sqm: 680,
-      capacity: "Up to 8 Guests",
-      bed: "Four Master Suites",
-      poolType: "28m Olympic Heated Stone Pool & Spa",
-      pricePerNight: 5400,
-      description: "Our signature estate encompasses panoramic pavilions set within acres of manicured wild tea gardens and pine forests. Designed for discerning families and private parties seeking supreme seclusion.",
-      coverImage: "/assets/aistudio/b01d3d3e628697c8bb82c00b8cd96ff1_2e27420a.jpg",
-      gallery: [
-        { url: "/assets/aistudio/b01d3d3e628697c8bb82c00b8cd96ff1_2e27420a.jpg", caption: "Estate chalet enveloped in peaceful morning mist and tea hills" },
-        { url: "/assets/aistudio/cb6b93e93c3a24143083eef6350ab534_cd4c702d.jpg", caption: "Sunlit trail leading directly to the grand estate pavilions" },
-        { url: "/assets/aistudio/13a9fc9d840154fec5f5a4ffc1093d5c_5ec2d6eb.jpg", caption: "Private panoramic lake and valley expedition grounds" }
-      ],
-      features: [
-        "28-meter private heated black-granite pool and hot spring spa",
-        "Full commercial kitchen with dedicated private estate chef",
-        "Private helipad access for seamless arrivals",
-        "Screening salon with acoustic acoustic panelling and 4K cinema",
-        "Dedicated fleet of electric luxury vehicles",
-        "Exclusive access to private high-altitude wine reserve"
-      ],
-      specs: [
-        { label: "Interior Living Area", value: "520 m²" },
-        { label: "Exterior Teak Decks", value: "160 m²" },
-        { label: "Bathrooms", value: "4 En-suite + 2 powder rooms" },
-        { label: "Exposure", value: "Private secluded southern valley" }
-      ],
-      floorPlanSummary: "Central cathedral living pavilion connecting via glass sky bridges to East and West accommodation wings, overlooking private thermal cascades."
-    }
-  ] as Villa[],
+  villas: VILLAS,
+  facilities: RESORT_FACILITIES,
 
   dining: [
     {
-      id: "embers-pine",
-      name: "Embers & Pine",
-      subtitle: "Three Michelin Star Gastronomy",
-      concept: "Hyper-local alpine terroir gastronomy crafted over open birch embers, incorporating wild herbs, mountain mushrooms, and heirloom cultivars.",
-      hours: "Dinner: 18:30 – 22:30 (Tuesday to Sunday)",
-      dressCode: "Smart Casual / Mountain Elegance",
-      sommelierHighlight: "Cellar of 4,800 biodynamic and vintage bottles curated by Master Sommelier Elena Vane.",
-      image: "/assets/gallery-colonial-manor-estate.jpg",
+      id: 'garden-terrace-lounge',
+      name: 'Aura 8 — Shaded Garden Terrace Lounge',
+      subtitle: 'Open-Air Courtyard Café & Morning Breakfast',
+      concept:
+        'Set beside flowering tropical trees and manicured lawns, serving fresh morning breakfast, herbal teas, and relaxed evening refreshments.',
+      hours: 'Breakfast: 07:30 – 10:30 · Lunch: 12:30 – 15:30 · Dinner: 18:30 – 22:00',
+      dressCode: 'Resort Casual',
+      sommelierHighlight: 'Chilled coastal botanical infusions and curated table wines.',
+      image: '/assets/aura-08.jpg',
       featuredDishes: [
-        { name: "Smoked Alpine Char in Pine Ash", notes: "Fermented juniper emulsion, pickled lingonberries, spruce tip oil" },
-        { name: "Aged Venison Loin over Sweet Birch", notes: "Wild mountain morels, roasted sunchoke, black truffle broth" },
-        { name: "Mead & Glacier Honey Parfait", notes: "Alpine blossom crisp, frozen mountain sorrel granite" }
-      ]
+        { name: 'Coastal Catch of the Day', notes: 'Coconut herb emulsion, grilled garden greens, citrus' },
+        { name: 'Tropical Courtyard Breakfast', notes: 'Warm sourdough, seasonal mango, island honey' },
+      ],
     },
-    {
-      id: "the-lantern-veranda",
-      name: "The Lantern Veranda",
-      subtitle: "Forest Canopy All-Day Dining & Afternoon Tea",
-      concept: "Suspended among century-old fir trees, serving wood-fired morning breads, mountain herbal teas, and vibrant midday salads.",
-      hours: "Breakfast: 07:00 – 11:00 · Lunch: 12:30 – 15:30 · Tea: 16:00 – 18:00",
-      dressCode: "Resort Casual",
-      sommelierHighlight: "Estate-foraged wild herbal infusions and biodynamic sparkling wines.",
-      image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80",
-      featuredDishes: [
-        { name: "Wood-Fired Sourdough & Mountain Butter", notes: "Cultured alpine butter, pine honey, wildflower pollen" },
-        { name: "Canopy Chanterelle Broth & Hand-Rolled Pasta", notes: "Wild thyme butter, 36-month mountain parmigiano" },
-        { name: "Alpine Berry Tartlet with Goat Milk Gelato", notes: "Foraged mountain blueberries, toasted hazelnut crust" }
-      ]
-    },
-    {
-      id: "the-granite-cellar",
-      name: "The Subterranean Granite Cellar",
-      subtitle: "Private Sommelier Tastings & Rare Vintages",
-      concept: "Carved into the natural mountain bedrock, maintaining a constant natural 12°C temperature for rare Barolos, Burgundies, and cult Swiss-Italian alpine wines.",
-      hours: "Tastings: 17:00 – 21:00 (Reservation required)",
-      dressCode: "Warm Layers Advised (12°C ambient)",
-      sommelierHighlight: "Vertical collections dating back to 1968 and rare zero-intervention amphora wines.",
-      image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1600&q=80",
-      featuredDishes: [
-        { name: "Artisanal Alpine Cheese Flight", notes: "Aged in regional hay caves, paired with 25-year aged balsamic" },
-        { name: "Cured Duck Prosciutto & Mountain Figs", notes: "Rosemary smoked sea salt, biodynamic olive nectar" }
-      ]
-    }
   ] as DiningVenue[],
 
-  spaTreatments: [
-    {
-      id: "volcanic-thermal-ritual",
-      title: "Alpine Thermal Stone & Wild Arnica Immersion",
-      duration: "90 Minutes",
-      price: 380,
-      description: "Heated basalt river stones steeped in mountain arnica oil melt deep muscular tension, followed by immersion in private mineral thermal waters.",
-      focus: "Muscle Recovery & Deep Grounding"
-    },
-    {
-      id: "forest-oxygen-facial",
-      title: "High-Altitude Forest Oxygen & Edelweiss Facial",
-      duration: "75 Minutes",
-      price: 320,
-      description: "Concentrated alpine edelweiss stem cells and hyperbaric oxygen replenish moisture compromised by crisp mountain altitudes.",
-      focus: "Hydration, Radiance & Cellular Renewal"
-    },
-    {
-      id: "sound-silence-meditation",
-      title: "Tibetan Sound Resonance & Forest Pine Scrub",
-      duration: "105 Minutes",
-      price: 420,
-      description: "Full-body exfoliation using stone-ground sea salt and crushed pine needles, harmonized by acoustic singing bowl vibrations in the cedar shala.",
-      focus: "Nervous System Reset & Energetic Alignment"
-    },
-    {
-      id: "couples-spring-ceremony",
-      title: "The Twilight Hot Spring Couples Ceremony",
-      duration: "120 Minutes",
-      price: 760,
-      description: "Private access to the lantern-lit volcanic rock onsen at twilight with rose petal bath, side-by-side bespoke massages, and vintage champagne.",
-      focus: "Romantic Seclusion & Sensory Rejuvenation"
-    }
-  ] as SpaTreatment[],
-
-  experiences: [
-    {
-      id: "hot-air-balloon",
-      title: "Sunrise Cloud-River Hot Air Balloon Flight",
-      duration: "3.5 Hours",
-      timing: "Departs at 05:45 (Weather dependent)",
-      tagline: "Ascend softly into the pink dawn light as the sun crowns the mountain glaciers",
-      description: "Take off directly from our private mountain meadow. Float silently over misty pine valleys and sheer granite pinnacles, concluding with a champagne breakfast served in a secluded alpine clearing.",
-      price: 850,
-      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80",
-      highlights: ["Private pilot & champagne service", "Panoramic aerial perspectives", "Meadow sunrise picnic"]
-    },
-    {
-      id: "forest-bathing-trek",
-      title: "Shinrin-Yoku Guided Canopy & Waterfall Trek",
-      duration: "2.5 Hours",
-      timing: "Morning 09:30 or Afternoon 14:00",
-      tagline: "Guided mindful immersion through ancient old-growth pine groves and glacial falls",
-      description: "Led by our resident botanist, awaken your senses through guided breathing exercises, barefoot moss walking, and natural cold-water immersion at a hidden mountain cascade.",
-      price: 240,
-      image: "/assets/aistudio/cb6b93e93c3a24143083eef6350ab534_cd4c702d.jpg",
-      highlights: ["Resident master naturalist guide", "Glacial spring dip", "Foraged pine tea ceremony"]
-    },
-    {
-      id: "helicopter-transfer",
-      title: "Private Helicopter Valley Transfer & Glacier Safari",
-      duration: "1.5 Hours",
-      timing: "Flexible on demand",
-      tagline: "Direct helipad transfer from Milan, Zurich, or Venice with aerial glacier orbit",
-      description: "Bypass winding alpine roads. Touch down directly on the resort's private heated helipad following a breathtaking low-level flight across dramatic mountain peaks and crystalline mountain lakes.",
-      price: 1850,
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1600&q=80",
-      highlights: ["Airbus H130 luxury helicopter", "Direct helipad touchdown", "Glacier flyover photography"]
-    },
-    {
-      id: "stargazing-observatory",
-      title: "Dark Sky Stargazing with Resident Astronomer",
-      duration: "2 Hours",
-      timing: "Nightly at 21:30",
-      tagline: "Certified dark sky zone revealing Saturn rings, Jupiter moons, and the Milky Way",
-      description: "With zero light pollution at 1,420 meters elevation, peer through our 16-inch Takahashi reflector telescope while relaxing with warm cashmere blankets and spiced mountain cacao.",
-      price: 180,
-      image: "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=1600&q=80",
-      highlights: ["16-inch professional telescope", "Resident astrophysicist commentary", "Cashmere blankets & warm drinks"]
-    }
-  ] as Experience[],
+  spaTreatments: [] as SpaTreatment[],
+  experiences: [] as Experience[],
 
   gallery: [
     {
-      id: "gal-user-7",
-      title: "Thatched Timber Deck & Cliffside Mountain Vista",
-      category: "villas",
-      imageUrl: "/assets/gallery-cliff-timber-bungalow.jpg",
-      cameraExif: "Leica Q3 · Summilux 28mm f/1.7 · ISO 100 · 1/400s",
-      location: "Cliffside Timber Deck Bungalows",
-      aspect: "portrait"
+      id: 'gal-aura-1',
+      title: 'Aura 1 — Vaulted King Luxury Suite',
+      category: 'luxury',
+      imageUrl: '/assets/aura-01.jpg',
+      imagePosition: 'object-[50%_62%]',
+      cameraExif: 'Luxury · 62 m² · King Bed · Bay Window & Terrace',
+      location: 'Aura 1 · Luxury Wing',
+      aspect: 'portrait',
     },
     {
-      id: "gal-user-8",
-      title: "Highland Ridge Lawns, Firepit & Mountain Panorama",
-      category: "nature",
-      imageUrl: "/assets/gallery-mountain-ridge-grounds.jpg",
-      cameraExif: "Sony A7R V · FE 16-35mm f/2.8 GM II · ISO 100 · 1/500s",
-      location: "Upper Ridge Recreation Lawn",
-      aspect: "portrait"
+      id: 'gal-aura-2',
+      title: 'Aura 2 — Garden Veranda Luxury Suite',
+      category: 'luxury',
+      imageUrl: '/assets/aura-02.jpg',
+      imagePosition: 'object-[50%_60%]',
+      cameraExif: 'Luxury · 58 m² · King Bed · Fluted Timber & Sofa',
+      location: 'Aura 2 · Luxury Wing',
+      aspect: 'portrait',
     },
     {
-      id: "gal-user-9",
-      title: "Hillside Terracotta Villas Amidst Tea Slopes",
-      category: "architecture",
-      imageUrl: "/assets/gallery-hillside-twin-villas.jpg",
-      cameraExif: "Canon EOS R5 · RF 24-70mm f/2.8L · ISO 160 · 1/320s",
-      location: "Emerald Slope Twin Residences",
-      aspect: "portrait"
+      id: 'gal-aura-3',
+      title: 'Aura 3 — Cove-Lit Family Luxury Suite',
+      category: 'luxury',
+      imageUrl: '/assets/aura-03.jpg',
+      imagePosition: 'object-[50%_62%]',
+      cameraExif: 'Luxury · 68 m² · 2 Double Beds · Cove Lighting & Balcony',
+      location: 'Aura 3 · Luxury Wing',
+      aspect: 'portrait',
     },
     {
-      id: "gal-user-10",
-      title: "Colonial Estate Manor & Misty Forest Gardens",
-      category: "architecture",
-      imageUrl: "/assets/gallery-colonial-manor-estate.jpg",
-      cameraExif: "Fujifilm GFX 100 II · GF 32-64mm f/4 · ISO 200 · 1/250s",
-      location: "Main Estate Courtyard & Terrace",
-      aspect: "portrait"
+      id: 'gal-aura-4',
+      title: 'Aura 4 — Ocean Palm Balcony Villa',
+      category: 'villa',
+      imageUrl: '/assets/aura-04.jpg',
+      imagePosition: 'object-[50%_58%]',
+      cameraExif: 'Villa · 48 m² · Twin Beds · Ocean Horizon Balcony',
+      location: 'Aura 4 · Seafront Villa',
+      aspect: 'portrait',
     },
     {
-      id: "gal-user-1",
-      title: "Sunlit Emerald Tea Valley & Mountain Trail",
-      category: "nature",
-      imageUrl: "/assets/aistudio/cb6b93e93c3a24143083eef6350ab534_cd4c702d.jpg",
-      cameraExif: "Hasselblad X2D 100C · XCD 38mm f/2.5 V · ISO 100 · 1/320s",
-      location: "High Ridge Valley Plantation",
-      aspect: "portrait"
+      id: 'gal-aura-5',
+      title: 'Aura 5 — Coastal Harbor View Villa',
+      category: 'villa',
+      imageUrl: '/assets/aura-05.jpg',
+      imagePosition: 'object-[50%_55%]',
+      cameraExif: 'Villa · 44 m² · King Bed · Coastal Bay Balcony',
+      location: 'Aura 5 · Harbor View Villa',
+      aspect: 'portrait',
     },
     {
-      id: "gal-user-11",
-      title: "Terraced Hillside Cottages & Stone Stairways",
-      category: "architecture",
-      imageUrl: "/assets/hero-hillside-retreat.jpg",
-      cameraExif: "Leica SL2 · APO-Summicron-SL 35mm f/2 · ISO 160 · 1/250s",
-      location: "Aura Valley Terraced Garden Wing",
-      aspect: "portrait"
+      id: 'gal-aura-6',
+      title: 'Aura 6 — Standard Comfort Queen Room',
+      category: 'normal',
+      imageUrl: '/assets/aura-06.jpg',
+      imagePosition: 'object-[50%_62%]',
+      cameraExif: 'Normal · 34 m² · Queen Bed · AC & Kettle Bar',
+      location: 'Aura 6 · Standard Wing',
+      aspect: 'portrait',
     },
     {
-      id: "gal-user-4",
-      title: "Forest Stone Cottage & Manicured Lawn",
-      category: "villas",
-      imageUrl: "/assets/aistudio/53648d5ddcc5a3211416b17975e2712e_d05d197b.jpg",
-      cameraExif: "Canon EOS R5 · RF 24-105mm f/4L IS · ISO 200 · 1/250s",
-      location: "Pine Crest Garden Chalet",
-      aspect: "portrait"
+      id: 'gal-aura-7',
+      title: 'Aura 7 — Standard Cozy Twin Room',
+      category: 'normal',
+      imageUrl: '/assets/aura-07.jpg',
+      imagePosition: 'object-[50%_60%]',
+      cameraExif: 'Normal · 32 m² · Twin Beds · Wood Headboards',
+      location: 'Aura 7 · Standard Wing',
+      aspect: 'portrait',
     },
     {
-      id: "gal-user-5",
-      title: "Sunlit Mountain Lake & Terraced Valley",
-      category: "nature",
-      imageUrl: "/assets/aistudio/13a9fc9d840154fec5f5a4ffc1093d5c_5ec2d6eb.jpg",
-      cameraExif: "Fujifilm GFX 100 II · GF 45-100mm f/4 · ISO 125 · 1/400s",
-      location: "Glacial Valley Lake Basin",
-      aspect: "portrait"
+      id: 'gal-aura-8',
+      title: 'Aura 8 — Shaded Garden Terrace Lounge',
+      category: 'facilities',
+      imageUrl: '/assets/aura-08.jpg',
+      imagePosition: 'object-[50%_52%]',
+      cameraExif: 'Facility · Covered Stone Patio & Garden Seating',
+      location: 'Aura 8 · Courtyard Lounge',
+      aspect: 'portrait',
     },
-    {
-      id: "gal-user-6",
-      title: "Misty Tea Plantation Cottage Shrouded in Clouds",
-      category: "villas",
-      imageUrl: "/assets/aistudio/b01d3d3e628697c8bb82c00b8cd96ff1_2e27420a.jpg",
-      cameraExif: "Nikon Z8 · NIKKOR Z 24-70mm f/2.8 S · ISO 250 · 1/160s",
-      location: "Tea Estate Cloud Sanctuary",
-      aspect: "portrait"
-    },
-    {
-      id: "gal-room-1",
-      title: "Classic Twin Room Interior",
-      category: "villas",
-      imageUrl: "/assets/facility-room-01.jpg",
-      imagePosition: "object-[50%_62%]",
-      cameraExif: "28mm · f/2.8 · ISO 200 · Warm Brick Wing",
-      location: "Classic Twin Room",
-      aspect: "portrait"
-    },
-    {
-      id: "gal-room-2",
-      title: "Spacious Family Twin Suite",
-      category: "villas",
-      imageUrl: "/assets/facility-room-02.jpg",
-      imagePosition: "object-[50%_68%]",
-      cameraExif: "24mm · f/2.8 · ISO 250 · Family Wing",
-      location: "Spacious Family Twin",
-      aspect: "portrait"
-    },
-    {
-      id: "gal-room-3",
-      title: "Balcony Garden Twin View",
-      category: "villas",
-      imageUrl: "/assets/facility-room-03.jpg",
-      imagePosition: "object-[50%_64%]",
-      cameraExif: "24mm · f/4 · ISO 160 · Garden Wing",
-      location: "Balcony Garden Twin",
-      aspect: "portrait"
-    },
-    {
-      id: "gal-room-4",
-      title: "Garden Veranda King Suite",
-      category: "villas",
-      imageUrl: "/assets/facility-room-04.jpg",
-      imagePosition: "object-[50%_65%]",
-      cameraExif: "28mm · f/2.8 · ISO 200 · Veranda Wing",
-      location: "Garden Veranda Suite",
-      aspect: "portrait"
-    },
-    {
-      id: "gal-room-5",
-      title: "Standard Comfort Queen Room",
-      category: "villas",
-      imageUrl: "/assets/facility-room-05.jpg",
-      imagePosition: "object-[50%_66%]",
-      cameraExif: "24mm · f/2.8 · ISO 200 · Comfort Wing",
-      location: "Standard Comfort Queen",
-      aspect: "portrait"
-    },
-    {
-      id: "gal-room-6",
-      title: "Palm View Timber Ceiling Twin",
-      category: "villas",
-      imageUrl: "/assets/facility-room-06.jpg",
-      imagePosition: "object-[50%_58%]",
-      cameraExif: "28mm · f/4 · ISO 125 · Palm Grove Wing",
-      location: "Palm View Timber Twin",
-      aspect: "portrait"
-    },
-    {
-      id: "gal-room-7",
-      title: "Tropical Terrace King Suite",
-      category: "villas",
-      imageUrl: "/assets/facility-room-07.jpg",
-      imagePosition: "object-[50%_65%]",
-      cameraExif: "28mm · f/4 · ISO 160 · Terrace Wing",
-      location: "Tropical Terrace King",
-      aspect: "portrait"
-    }
-  ] as GalleryPhoto[]
+  ] as GalleryPhoto[],
 };

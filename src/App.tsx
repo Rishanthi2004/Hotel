@@ -74,7 +74,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] dark:bg-stone-950 text-stone-900 dark:text-stone-100 flex flex-col selection:bg-amber-900/20 dark:selection:bg-amber-900/40 selection:text-amber-900 dark:selection:text-amber-100 transition-colors duration-500">
+    <div className="min-h-screen bg-[#F7FAFA] dark:bg-stone-950 text-slate-900 dark:text-stone-100 flex flex-col selection:bg-teal-700/15 dark:selection:bg-teal-900/40 selection:text-teal-900 dark:selection:text-teal-100 transition-colors duration-500">
       {/* Top Bar Navigation (Strictly Home, About Us, Facilities, Gallery, Contact) */}
       <Navbar
         onOpenBooking={() => handleOpenBooking()}
@@ -100,10 +100,10 @@ export default function App() {
           <AboutUs />
         </ScrollSection>
 
-        {/* 3. FACILITIES: Accommodations, Gastronomy, Thermal Onsen, & Mountain Expeditions (Side-by-side 2 cards on mobile) */}
+        {/* 3. FACILITIES: Categorized Luxury, Villa, Normal & Resort Facilities (Aura 1–11) */}
         <ScrollSection id="facilities" variant="cascade">
           <Facilities
-            onOpenBooking={() => handleOpenBooking()}
+            onOpenBooking={(villaId) => handleOpenBooking(villaId)}
           />
         </ScrollSection>
 
